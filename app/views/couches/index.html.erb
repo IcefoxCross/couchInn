@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Couches</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Couchtypeid</th>
+      <th>Description</th>
+      <th>Location</th>
+      <th>Datebegin</th>
+      <th>Dateend</th>
+      <th>Maxhosts</th>
+      <th>Image</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @couches.each do |couch| %>
+      <tr>
+        <td><%= couch.name %></td>
+        <td><%= couch.couchTypeID %></td>
+        <td><%= couch.description %></td>
+        <td><%= couch.location %></td>
+        <td><%= couch.dateBegin %></td>
+        <td><%= couch.dateEnd %></td>
+        <td><%= couch.maxHosts %></td>
+        <td><%= couch.image %></td>
+        <td><%= link_to 'Show', couch %></td>
+        <td><%= link_to 'Edit', edit_couch_path(couch) %></td>
+        <td><%= link_to 'Destroy', couch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Couch', new_couch_path %>

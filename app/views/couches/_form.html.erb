@@ -1,0 +1,49 @@
+<%= form_for(@couch) do |f| %>
+  <% if @couch.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@couch.errors.count, "error") %> prohibited this couch from being saved:</h2>
+
+      <ul>
+      <% @couch.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :couchTypeID %><br>
+    <%= f.number_field :couchTypeID %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :location %><br>
+    <%= f.text_field :location %>
+  </div>
+  <div class="field">
+    <%= f.label :dateBegin %><br>
+    <%= f.datetime_select :dateBegin %>
+  </div>
+  <div class="field">
+    <%= f.label :dateEnd %><br>
+    <%= f.datetime_select :dateEnd %>
+  </div>
+  <div class="field">
+    <%= f.label :maxHosts %><br>
+    <%= f.number_field :maxHosts %>
+  </div>
+  <div class="field">
+    <%= f.label :image %><br>
+    <%= f.text_field :image %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

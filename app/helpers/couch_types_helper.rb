@@ -1,0 +1,2 @@
+module CouchTypesHelper
+end

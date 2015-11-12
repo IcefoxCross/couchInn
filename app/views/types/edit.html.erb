@@ -1,6 +1,18 @@
-<h1>Editing Type</h1>
+<div class="row">
+	<div class="col-md-12">
+		<h1>Editar el Tipo de Couch: <%= @type.name %></h1>
+	</div>    
+</div>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @type %> |
-<%= link_to 'Back', types_path %>
+<div class="row">
+	<div class="col-md-12">
+		<%= render 'form' %>
+	</div>    
+</div>		
+		
+<div class="row">
+	<div class="col-md-12">
+		<%= link_to 'Show', @type %> |
+		<%= link_to 'Back', types_path %>
+	</div>
+</div>

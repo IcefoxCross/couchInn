@@ -18,6 +18,8 @@ ActiveRecord::Schema.define(version: 20151111224200) do
 
   create_table "couches", force: :cascade do |t|
     t.string   "name"
+    t.integer  "type_id"
+    t.integer  "user_id"
     t.string   "description"
     t.string   "location"
     t.datetime "dateBegin"
@@ -26,8 +28,6 @@ ActiveRecord::Schema.define(version: 20151111224200) do
     t.string   "image"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.integer  "user_id"
-    t.integer  "type_id"
   end
 
   create_table "types", force: :cascade do |t|
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20151111224200) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "lastName"
-    t.string   "email"
+    t.string   "mail"
     t.string   "password"
     t.boolean  "admin"
     t.boolean  "premium"

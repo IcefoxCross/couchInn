@@ -36,8 +36,9 @@
 </p>
 
 <p>
-  <strong>Image:</strong>
-  <%= @couch.image %>
+  <strong>Image:</strong><br>
+
+  <%= image_tag( @couch.image , height: '320', width: '320')%>
 </p>
 
 <%= link_to 'Edit', edit_couch_path(@couch) %> |

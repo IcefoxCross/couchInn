@@ -17,6 +17,10 @@
       </div>
 
       <div class="btn-toolbar pull-right">
+
+          <% if user_signed_in? && current_user.admin? %>
+            <%= link_to("Tipos de Couch", types_path, class: "btn btn-success") %>
+          <% end %>
           <% if user_signed_in? %>
              <%= link_to("Salir", logout_path, :method => :delete, class: "btn btn-default") %>
           <% else %>

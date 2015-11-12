@@ -4,10 +4,10 @@ class TypesController < ApplicationController
 
     def is_admin
         if (current_user==nil)
-            redirect_to couches_path, notice: "Error: Solo los administradores pueden visualizar esta seccion"
+            redirect_to couches_path, alert: "Error: Solo los administradores pueden visualizar esta seccion"
         else        
             if (current_user.admin!=true)
-                redirect_to couches_path, notice: "Error: Solo los administradores pueden visualizar esta seccion"
+                redirect_to couches_path, alert: "Error: Solo los administradores pueden visualizar esta seccion"
             end
         end
     end

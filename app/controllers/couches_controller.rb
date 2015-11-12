@@ -4,8 +4,12 @@ class CouchesController < ApplicationController
   # GET /couches
   # GET /couches.json
   def index
-    @couches = Couch.all
+      @couches = Couch.all
   end
+
+    def index_self
+        @couches = Couch.where(user: current_user)
+    end
 
   # GET /couches/1
   # GET /couches/1.json

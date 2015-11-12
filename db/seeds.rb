@@ -9,10 +9,13 @@ User.destroy_all
 Couch.destroy_all
 Type.destroy_all
 
-Type.find_or_create_by(name: 'Cama')
 Type.find_or_create_by(name: 'default')
+Type.find_or_create_by(name: 'Cama')
 sillon = Type.find_or_create_by(name: 'Sillon')
 
-juan = User.find_or_create_by(name: 'Juan', lastName: 'Perez', email: 'juanp@mail.com', password: '12345678', admin: false, premium: true)
+juan = User.find_or_create_by(name: 'Juan', lastName: 'Perez', mail: 'juanp@mail.com', password: '12345', admin: false, premium: true)
 
 Couch.find_or_create_by(name: 'Sillon Azul', description: 'Un sillon azul muy comodo.', location: 'La Plata', dateBegin: DateTime.current, dateEnd: DateTime.current.change(day: 15), maxHosts: 1, image: 'http://i.imgur.com/hwlWzBk.jpg', user: juan, type: sillon)
+Couch.find_or_create_by(name: 'Sillon Azul2', description: 'Un sillon azul muy comodo.', location: 'La Plata', dateBegin: DateTime.current, dateEnd: DateTime.current.change(day: 15), maxHosts: 1, image: 'http://i.imgur.com/hwlWzBk.jpg', user: juan, type: sillon)
+Couch.find_or_create_by(name: 'Sillon Azul3', description: 'Un sillon azul muy comodo.', location: 'La Plata', dateBegin: DateTime.current, dateEnd: DateTime.current.change(day: 15), maxHosts: 1, image: 'http://i.imgur.com/hwlWzBk.jpg', user: juan, type: sillon)
+Couch.find_or_create_by(name: 'Sillon Azul4', description: 'Un sillon azul muy comodo.', location: 'La Plata', dateBegin: DateTime.current, dateEnd: DateTime.current.change(day: 15), maxHosts: 1, image: 'http://i.imgur.com/hwlWzBk.jpg', user: juan, type: sillon)

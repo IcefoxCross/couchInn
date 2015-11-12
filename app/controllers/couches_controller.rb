@@ -69,6 +69,6 @@ class CouchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def couch_params
-      params.require(:couch).permit(:name, :couchTypeID, :description, :location, :dateBegin, :dateEnd, :maxHosts, :image)
+      params.require(:couch).permit(:name, :type_id, :description, :location, :dateBegin, :dateEnd, :maxHosts, :image)
     end
 end

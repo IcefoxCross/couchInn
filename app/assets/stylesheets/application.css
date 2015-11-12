@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+.btn-toolbar {
+	padding-top: 30px;
+}

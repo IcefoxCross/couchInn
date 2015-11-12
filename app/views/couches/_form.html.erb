@@ -16,8 +16,8 @@
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :couchTypeID %><br>
-    <%= f.number_field :couchTypeID %>
+    <%= f.label :type_id %><br>
+    <%= collection_select(:couch, :type_id, Type.all, :id, :name, {}, { class: 'form-control'}) %>
   </div>
   <div class="field">
     <%= f.label :description %><br>

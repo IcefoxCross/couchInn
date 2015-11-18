@@ -11,23 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151111224200) do
+ActiveRecord::Schema.define(version: 20151117004756) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "couches", force: :cascade do |t|
     t.string   "name"
-    t.integer  "type_id"
-    t.integer  "user_id"
     t.string   "description"
     t.string   "location"
-    t.datetime "dateBegin"
-    t.datetime "dateEnd"
+    t.date     "dateBegin"
+    t.date     "dateEnd"
     t.integer  "maxHosts"
     t.string   "image"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.integer  "type_id"
   end
 
   create_table "types", force: :cascade do |t|
@@ -39,13 +39,12 @@ ActiveRecord::Schema.define(version: 20151111224200) do
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "lastName"
-    t.string   "mail"
+    t.string   "email",                  default: "", null: false
     t.string   "password"
     t.boolean  "admin"
     t.boolean  "premium"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -55,6 +54,7 @@ ActiveRecord::Schema.define(version: 20151111224200) do
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
+    t.datetime "age"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -5,12 +5,14 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 	has_many :couch, dependent: :destroy
 
-	validates_inclusion_of :age,
-		in: Date.new(1990)..Time.now.years_ago(18).to_date, 
-		message: "Tenes que tener como minimo 18 años de edad para usar el servicio."
+	validate :edad_minima
 
 	def get_age
 		d = Date.today.year - self.age.year
 		(Date.today < self.age + d.years) ? d-1 : d
+	end
+
+	def edad_minima
+		errors.add(:age, "Tenes que tener como minimo 18 años de edad para usar el servicio.") if self.get_age < 18
 	end
 end

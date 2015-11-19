@@ -16,7 +16,7 @@ placeholder: 'Ingrese el nombre' %>
   <div class="field">
     <%= f.label :age, "Fecha de nacimiento" %><br />
     <%= f.date_field :age ,required: true %>
-    <% if @user.errors[:age] %>
+    <% if @user.errors[:age].any? %>
       <div class="alert alert-danger"> <%= @user.errors[:age].first %> </div>
     <% end %>
   </div>

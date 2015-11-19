@@ -24,6 +24,9 @@ placeholder: 'Ingrese el nombre' %>
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, required: true%>
+    <% if @user.errors[:email].any? %>
+      <div class="alert alert-danger"> <%= "El e-mail ya está siendo usado por otro usuario." %> </div>
+    <% end %>
   </div>
 
   <div class="field">

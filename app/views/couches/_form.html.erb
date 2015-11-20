@@ -12,7 +12,7 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :estado %><br>
+      <%= f.label :name %><br>
     <%= f.text_field :name, class: 'form-control', label: 'Name', placeholder: 'Ingrese el nombre' %>
   </div>
   <div class="field">
@@ -21,15 +21,16 @@
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_field :description, class: 'form-control', label: 'Description', placeholder: 'Ingrese la descripcion' %>
   </div>
   <div class="field">
     <%= f.label :location %><br>
-    <%= f.text_field :location %>
+    <%= f.text_field :location, class: 'form-control', label: 'Location', placeholder: 'Ingrese la localizacion' %>
   </div>
   <div class="field">
     <%= f.label :dateBegin %><br>
     <%= f.datetime_select :dateBegin %>
+      
   </div>
   <div class="field">
     <%= f.label :dateEnd %><br>
@@ -37,11 +38,11 @@
   </div>
   <div class="field">
     <%= f.label :maxHosts %><br>
-    <%= f.number_field :maxHosts %>
+      <%= f.number_field :maxHosts, class: 'form-control', label: 'maxHosts', placeholder: 'Ingrese el numero maximo de inquilinos' %>
   </div>
   <div class="field">
     <%= f.label :image %><br>
-    <%= f.text_field :image %>
+    <%= f.url_field :image, class: 'form-control', label: 'Image', placeholder: 'Ingrese el link a la imagen' %>
   </div>
   <div class="actions">
     <%= f.submit %>

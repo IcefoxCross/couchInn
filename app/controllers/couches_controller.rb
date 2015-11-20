@@ -4,11 +4,11 @@ class CouchesController < ApplicationController
   # GET /couches
   # GET /couches.json
   def index
-      @couches = Couch.all
+      @couches = Couch.paginate(:page => params[:page], :per_page => 10)
   end
 
     def index_self
-        @couches = Couch.where(user: current_user)
+        @couches = Couch.where(user: current_user).paginate(:page => params[:page], :per_page => 10)
     end
 
   # GET /couches/1
@@ -29,10 +29,11 @@ class CouchesController < ApplicationController
   # POST /couches.json
   def create
     @couch = Couch.new(couch_params)
+    @couch.user_id = current_user.id
 
     respond_to do |format|
       if @couch.save
-        format.html { redirect_to @couch, notice: 'Couch was successfully created.' }
+        format.html { redirect_to @couch, notice: 'El Couch fue creado exitosamente.' }
         format.json { render :show, status: :created, location: @couch }
       else
         format.html { render :new }
@@ -46,7 +47,7 @@ class CouchesController < ApplicationController
   def update
     respond_to do |format|
       if @couch.update(couch_params)
-        format.html { redirect_to @couch, notice: 'Couch was successfully updated.' }
+        format.html { redirect_to @couch, notice: 'El Couch fue actualizado exitosamente.' }
         format.json { render :show, status: :ok, location: @couch }
       else
         format.html { render :edit }
@@ -60,7 +61,7 @@ class CouchesController < ApplicationController
   def destroy
     @couch.destroy
     respond_to do |format|
-      format.html { redirect_to couches_url, notice: 'Couch was successfully destroyed.' }
+      format.html { redirect_to couches_self_path, notice: 'El Couch fue eliminado exitosamente.' }
       format.json { head :no_content }
     end
   end
@@ -75,4 +76,5 @@ class CouchesController < ApplicationController
     def couch_params
       params.require(:couch).permit(:name, :type_id, :description, :location, :dateBegin, :dateEnd, :maxHosts, :image)
     end
+
 end

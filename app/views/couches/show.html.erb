@@ -1,45 +1,49 @@
-<p id="notice"><%= notice %></p>
+
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nombre:</strong>
   <%= @couch.name %>
 </p>
 
 <p>
-  <strong>Type:</strong>
+  <strong>Tipo:</strong>
   <%= @couch.type.name %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>Descripción:</strong>
   <%= @couch.description %>
 </p>
 
 <p>
-  <strong>Location:</strong>
+  <strong>Lugar:</strong>
   <%= @couch.location %>
 </p>
 
 <p>
-  <strong>Datebegin:</strong>
+  <strong>Fecha de Inicio:</strong>
   <%= @couch.dateBegin %>
 </p>
 
 <p>
-  <strong>Dateend:</strong>
+  <strong>Fecha Limite:</strong>
   <%= @couch.dateEnd %>
 </p>
 
 <p>
-  <strong>Maxhosts:</strong>
+  <strong>Huespedes:</strong>
   <%= @couch.maxHosts %>
 </p>
 
 <p>
-  <strong>Image:</strong><br>
+  <strong>Imagen:</strong><br>
 
   <%= image_tag( @couch.image , height: '320', width: '320')%>
 </p>
 
-<%= link_to 'Edit', edit_couch_path(@couch) %> |
-<%= link_to 'Back', couches_path %>
+<% if user_signed_in? && current_user.name==@couch.user.name %>
+<%= link_to 'Editar', edit_couch_path(@couch), class: "btn btn-default"%>                 
+<%= link_to 'Destroy', @couch, method: :delete, data: { confirm: '¿Seguro de querer elimirar el Couch?' }, class: "btn btn-danger" %>
+<% end %>
+<br>
+<%= link_to 'Volver', couches_path, class: "btn btn-default"%>

@@ -18,14 +18,21 @@
 
       <div class="btn-toolbar pull-right">
 
-          <% if user_signed_in? && current_user.admin? %>
-            <%= link_to("Tipos de Couch", types_path, class: "btn btn-success") %>
-          <% end %>
-          <% if user_signed_in? %>
-             <%= link_to("Salir", logout_path, :method => :delete, class: "btn btn-default") %>
-          <% else %>
-             <%= link_to("Ingresar", login_path, class: "btn btn-default") %>
-          <% end %>
+
+        <% if user_signed_in? && !current_user.admin? %>
+          <%= link_to 'New Couch', new_couch_path, class: "btn btn-success" %>
+          <%= link_to 'Mis Couches', couches_self_path, class: "btn btn-default" %>
+        <% end %>
+
+        <% if user_signed_in? && current_user.admin? %>
+          <%= link_to 'Tipos de Couch', types_path, class: "btn btn-success" %>
+        <% end %>
+
+        <% if user_signed_in? %>
+           <%= link_to 'Salir', logout_path, :method => :delete, class: "btn btn-default"%>
+        <% else %>
+           <%= link_to 'Ingresar', login_path, class: "btn btn-default"%>
+        <% end %>
       </div>
 
     </div>

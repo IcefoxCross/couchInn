@@ -1,0 +1,62 @@
+<header>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          
+          <%= link_to root_path, class: 'navbar-brand' do %>
+            <%= image_tag "logo.png", title: "Logo", class: "logo" %>
+          <% end %>
+          
+<!--
+          <button type="button" class="btn btn-default navbar-btn ">Sign in</button>
+-->
+
+        <div class="collapse navbar-collapse">
+          
+        </div><!--/.nav-collapse -->
+      </div>
+
+      <div class="btn-toolbar pull-left">
+
+        <% if !user_signed_in? %>
+           <%= link_to 'Ingresar', login_path, class: "btn btn-default"%>
+        <% else %>
+
+          <% if current_user.admin? %>
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Menú
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><%= link_to 'Tipos de Couch', types_path %></li>
+                <li role="separator" class="divider"></li>
+                <li><%= link_to 'Salir', logout_path, :method => :delete %></li>
+              </ul>
+            </div>
+          <% else %>
+
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Menú
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><%= link_to 'New Couch', new_couch_path %></li>
+                <li><%= link_to 'Mis Couches', couches_self_path %></li>
+                <li role="separator" class="divider"></li>
+                <li><%= link_to 'Salir', logout_path, :method => :delete %></li>
+              </ul>
+            </div>
+          <% end %>
+
+        <% end %>
+
+      </div>
+
+    </div>
+  </header>

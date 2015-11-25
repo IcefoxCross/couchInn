@@ -12,39 +12,39 @@
   <% end %>
 
   <div class="field">
-      <%= f.label :name %><br>
-    <%= f.text_field :name, class: 'form-control', label: 'Name', placeholder: 'Ingrese el nombre' %>
+      <%= f.label "Nombre" %><br>
+    <%= f.text_field :name, class: 'form-control', label: 'Nombre', placeholder: 'Ingrese el nombre' %>
   </div>
   <div class="field">
-    <%= f.label :type_id %><br>
+    <%= f.label "Tipo de hospedaje" %><br>
     <%= collection_select(:couch, :type_id, Type.all, :id, :name, {}, { class: 'form-control'}) %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description, class: 'form-control', label: 'Description', placeholder: 'Ingrese la descripcion' %>
+    <%= f.label "Descripción" %><br>
+    <%= f.text_field :description, class: 'form-control', label: 'Descripción', placeholder: 'Ingrese la descripcion' %>
   </div>
   <div class="field">
-    <%= f.label :location %><br>
-    <%= f.text_field :location, class: 'form-control', label: 'Location', placeholder: 'Ingrese la localizacion' %>
+    <%= f.label "Lugar" %><br>
+    <%= f.text_field :location, class: 'form-control', label: 'Lugar', placeholder: 'Ingrese la localizacion' %>
   </div>
   <div class="field">
-    <%= f.label :dateBegin %><br>
+    <%= f.label "Fecha de Inicio" %><br>
     <%= f.datetime_select :dateBegin %>
       
   </div>
   <div class="field">
-    <%= f.label :dateEnd %><br>
+    <%= f.label "Fecha Final" %><br>
     <%= f.datetime_select :dateEnd %>
   </div>
   <div class="field">
-    <%= f.label :maxHosts %><br>
+    <%= f.label "Número de huéspedes" %><br>
       <%= f.number_field :maxHosts, class: 'form-control', label: 'maxHosts', placeholder: 'Ingrese el numero maximo de inquilinos' %>
   </div>
   <div class="field">
-    <%= f.label :image %><br>
+    <%= f.label "Imagen (insertar enlace http)" %><br>
     <%= f.url_field :image, class: 'form-control', label: 'Image', placeholder: 'Ingrese el link a la imagen' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Actualizar", class: "btn btn-default" %>
   </div>
 <% end %>

@@ -22,37 +22,26 @@
            <%= link_to 'Ingresar', login_path, class: "btn btn-default"%>
         <% else %>
 
-          <% if current_user.admin? %>
-            <div class="dropdown">
-              <button class="btn btn-default dropdown-toggle " type="button" id="dropdownMenuAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Menú
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                <%= current_user.name %>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
+              <li><%= link_to 'Nuevo Hospedaje', new_couch_path %></li>
+              <li><%= link_to 'Mis Hospedajes', couches_self_path %></li>
+              <li><%= link_to 'Mi Cuenta', current_user %></li>
+              <li role="separator" class="divider"></li>
+
+              <% if current_user.admin? %>
                 <li><%= link_to 'Tipos de Couch', types_path %></li>
                 <li role="separator" class="divider"></li>
-                <li><%= link_to 'Salir', logout_path, :method => :delete %></li>
-              </ul>
-            </div>
-          <% else %>
-
-            <div class="dropdown">
-              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenuUser" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                Menú
-                <span class="caret"></span>
-              </button>
-              <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><%= link_to 'Nuevo Hospedaje', new_couch_path %></li>
-                <li><%= link_to 'Mis Hospedajes', couches_self_path %></li>
-                <li role="separator" class="divider"></li>
-                <li><%= link_to 'Salir', logout_path, :method => :delete %></li>
-              </ul>
-            </div>
-          <% end %>
+              <% end %>
+              
+              <li><%= link_to 'Salir', logout_path, :method => :delete %></li>
+            </ul>
+          </div>
+          
 
         <% end %>
 

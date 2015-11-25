@@ -14,9 +14,9 @@
     <% @types.each do |type| %>
       <tr>
         <td><%= type.name %></td>
-        <td><%= link_to 'Show', type %></td>
-        <td><%= link_to 'Edit', edit_type_path(type) %></td>
-        <td><%= link_to 'Destroy', type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Ver', type %></td>
+        <td><%= link_to 'Editar', edit_type_path(type) %></td>
+        <td><%= link_to 'Eliminar', type, method: :delete, data: { confirm: '¿Seguro de querer elimirar el Tipo?' }, class: "btn btn-danger" %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Type', new_type_path %>
+<%= link_to 'Nuevo Tipo', new_type_path %>

@@ -18,3 +18,9 @@
 	padding-top: 30px;
 	padding-right: 20px;
 }
+
+.btn.btn-default{
+	color:#F2F4EC;
+	background-color:#96ac3c;
+	border-color:#96ac3c
+}

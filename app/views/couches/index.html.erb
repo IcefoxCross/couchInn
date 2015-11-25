@@ -1,7 +1,4 @@
-
-
 <h1>Listado de Hospedajes</h1>
-
 
   <table class="table table-hover">
     <thead>
@@ -56,4 +53,6 @@
   </table>
 <br>
 
-<%= will_paginate @couches, :class => 'pagination', :previous_label => "Anterior", :next_label => "Siguiente" %>
+<div class="pagination">
+    <%= will_paginate @couches, :container => false, :previous_label => "Anterior", :next_label => "Siguiente" %>
+</div>

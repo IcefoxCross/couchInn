@@ -4,7 +4,7 @@ class CouchesController < ApplicationController
   # GET /couches
   # GET /couches.json
   def index
-      @couches = Couch.paginate(:page => params[:page], :per_page => 10)
+      @couches = Couch.paginate(:page => params[:page], :per_page => 3)
   end
 
     def index_self

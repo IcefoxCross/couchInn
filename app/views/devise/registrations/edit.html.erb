@@ -13,17 +13,17 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(dejar en blanco si no querés cambiarlo)</i><br />
+    <%= f.label "Contraseña" %> <i>(dejar en blanco si no querés cambiarlo)</i><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label "Confirmar contraseña" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(necesitamos tu contraseña actual para confirmar los cambios)</i><br />
+    <%= f.label "Contraseña actual" %> <i>(necesitamos tu contraseña actual para confirmar los cambios)</i><br />
     <%= f.password_field :current_password, autocomplete: "off" %>
   </div>
 

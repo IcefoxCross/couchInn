@@ -4,7 +4,22 @@ class CouchesController < ApplicationController
   # GET /couches
   # GET /couches.json
   def index
-      @couches = Couch.paginate(:page => params[:page], :per_page => 3)
+      #@couches = Couch.paginate(:page => params[:page], :per_page => 3)
+
+      @filterrific = initialize_filterrific(
+        Couch,
+        params[:filterrific],
+        select_options: {
+          sorted_by: Couch.options_for_sorted_by,
+          with_type_id: Type.options_for_select
+        },
+      ) or return
+      @couches = @filterrific.find.page(params[:page]).paginate(:page => params[:page], :per_page => 5)
+
+      respond_to do |format|
+        format.html
+        format.js
+      end
   end
 
     def index_self

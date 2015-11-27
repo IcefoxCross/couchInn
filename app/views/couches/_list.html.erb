@@ -1,0 +1,59 @@
+<div id="filterrific_results">
+
+  <table class="table table-hover">
+      <thead>
+      <div class="row">
+        <tr>
+          <div class="col-md-2">
+            <th></th>
+          </div> 
+          <div class="col-md-6">
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Dueño</th>
+            <th>Lugar</th>
+            <th>Huespedes</th>
+            <th>Fecha de Inicio</th>
+            <th>Fecha Limite</th>
+          </div> 
+          <div class="col-md-4">
+            <th>Descripción</th>
+          </div> 
+        </tr>
+      </div> 
+      </thead>
+
+      <tbody>
+      <div class="row">
+        <% @couches.each do |couch| %>
+          <tr data-link="<%= couch_path(couch) %>">
+            <div class="col-md-2">
+              <% if couch.user.premium? %>
+                <td class="img-thumbnail"><%= image_tag( couch.image , height: '80', width: '80')%></td>
+              <% else %>
+                <td></td>
+              <% end %>
+            </div> 
+            <div class="col-md-6">
+              <td><%= couch.name %></td>
+              <td><%= couch.type.name %></td>
+              <td><%= couch.user.name %></td>
+              <td><%= couch.location %></td>
+              <td><%= couch.maxHosts %></td>
+              <td><%= couch.dateBegin.strftime('%v') %></td>
+              <td><%= couch.dateEnd.strftime('%v') %></td>
+            </div> 
+            <div class="col-md-4">
+              <td><%= couch.description.truncate(40, :separator => ' ') %></td>
+            </div> 
+          </tr>
+        <% end %>
+      </div> 
+      </tbody>
+    </table>
+  <br>
+
+  <div class="pagination">
+      <%= will_paginate @couches, :container => false, :previous_label => "Anterior", :next_label => "Siguiente" %>
+  </div>
+</div>

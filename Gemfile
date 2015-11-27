@@ -31,6 +31,8 @@ gem 'will_paginate', '~> 3.0', '>= 3.0.7'
 
 gem 'custom_error_message', '~> 1.1', '>= 1.1.1'
 
+gem 'rails-i18n', '~> 4.0', '>= 4.0.5'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

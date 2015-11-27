@@ -4,6 +4,9 @@ class Couch < ActiveRecord::Base
 	belongs_to :user
 	has_many :reservations, dependent: :destroy
 
+  validate :consistent_dates
+  validate :consistent_maxHosts
+
 	# Recibe un usuario como parámetro y retorna 
   	# si es dueño del couch
 	def is_owner?(user)
@@ -32,4 +35,21 @@ class Couch < ActiveRecord::Base
       		result << couch if couch.is_free?(from, to) # Agregamos el hospedaje si está libre
     	end
   	end
+
+  private
+  def consistent_dates
+    if (self.dateBegin <= Date.current)
+      errors.add(:dateBegin, '^ La Fecha de Inicio tiene que ser mayor a la fecha actual')
+    end
+    if (self.dateBegin >= self.dateEnd)
+      errors.add(:dateEnd, '^ La Fecha de Inicio tiene que ser menor a la Fecha Final')
+    end
+  end
+
+  def consistent_maxHosts
+    if (self.maxHosts < 0)
+      errors.add(:maxHosts, '^ El numero maximo de inquilinos tiene que ser mayor a cero.')
+    end
+  end
+
 end

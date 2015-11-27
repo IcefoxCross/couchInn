@@ -36,12 +36,14 @@
       <% if @couch.is_owner?(current_user) %>
         <%= link_to 'Editar', edit_couch_path(@couch), class: "btn btn-warning"%>  
         <%= link_to 'Eliminar', @couch, method: :delete, data: { confirm: '¿Seguro de querer elimirar el Couch?' }, class: "btn btn-danger" %><br>
+        <br>
+        <%= link_to 'Volver', couches_self_path, class: "btn btn-default"%>
       <% else %>
         <%= link_to 'Reservar', new_reservation_path(@couch), class: "btn btn-default"%><br> <!-- TODO crear parametros en el controller de reserva -->
+        <br>
+        <%= link_to 'Volver', @url_back, class: "btn btn-default"%>
       <% end %>
     <% end %>
-    <br>
-    <%= link_to 'Volver', @url_back, class: "btn btn-default"%>
   </div>
 </div>
 

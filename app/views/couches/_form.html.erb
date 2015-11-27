@@ -14,7 +14,7 @@
 
       <div class="field">
           <%= f.label "Nombre" %><br>
-        <%= f.text_field :name, class: 'form-control', label: 'Nombre', placeholder: 'Ingrese el nombre' %>
+        <%= f.text_field :name, required: true, class: 'form-control', label: 'Nombre', placeholder: 'Ingrese el nombre' %>
       </div>
       <div class="field">
         <%= f.label "Tipo de hospedaje" %><br>
@@ -22,31 +22,30 @@
       </div>
       <div class="field">
         <%= f.label "Descripción" %><br>
-        <%= f.text_field :description, class: 'form-control', label: 'Descripción', placeholder: 'Ingrese la descripcion' %>
+        <%= f.text_area :description, class: 'form-control', :rows => 4, label: 'Descripción', placeholder: 'Ingrese la descripcion' %>
       </div>
       <div class="field">
         <%= f.label "Lugar" %><br>
-        <%= f.text_field :location, class: 'form-control', label: 'Lugar', placeholder: 'Ingrese la localizacion' %>
+        <%= f.text_field :location, required: true, class: 'form-control', label: 'Lugar', placeholder: 'Ingrese la localizacion' %>
       </div>
       <div class="field">
         <%= f.label "Fecha de Inicio" %><br>
-        <%= f.date_select :dateBegin %>
-          
+        <%= f.date_field :dateBegin, required: true %>  
       </div>
       <div class="field">
         <%= f.label "Fecha Final" %><br>
-        <%= f.date_select :dateEnd %>
+        <%= f.date_field :dateEnd, required: true %>
       </div>
       <div class="field">
         <%= f.label "Número de huéspedes" %><br>
-          <%= f.number_field :maxHosts, class: 'form-control', label: 'maxHosts', placeholder: 'Ingrese el numero maximo de inquilinos' %>
+          <%= f.number_field :maxHosts, required: true, class: 'form-control', label: 'maxHosts', placeholder: 'Ingrese el numero maximo de inquilinos' %>
       </div>
       <div class="field">
         <%= f.label "Imagen (insertar enlace http)" %><br>
         <%= f.url_field :image, class: 'form-control', label: 'Image', placeholder: 'Ingrese el link a la imagen' %>
       </div>
       <div class="actions">
-        <%= f.submit "Actualizar", class: "btn btn-default" %>
+        <%= f.submit "Guardar", class: "btn btn-default" %>
       </div>
 
     <% end %>

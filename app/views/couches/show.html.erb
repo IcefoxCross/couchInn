@@ -1,48 +1,53 @@
 
+<div class="row">
+  <div class="col-md-6">
+    <!-- <h3><strong>Nombre:</strong></h3> -->
+    <h1><%= @couch.name %></h1>
+    <br>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @couch.name %>
-</p>
+    <h3><strong>Tipo:</strong> <%= @couch.type.name %></h3>
 
-<p>
-  <strong>Tipo:</strong>
-  <%= @couch.type.name %>
-</p>
+    <h3><strong>Lugar:</strong> <%= @couch.location %></h3>
 
-<p>
-  <strong>Descripción:</strong>
-  <%= @couch.description %>
-</p>
+    <h3><strong>Fecha de Inicio:</strong> <%= @couch.dateBegin %></h3>
 
-<p>
-  <strong>Lugar:</strong>
-  <%= @couch.location %>
-</p>
+    <h3><strong>Fecha Limite:</strong> <%= @couch.dateEnd %></h3>
 
-<p>
-  <strong>Fecha de Inicio:</strong>
-  <%= @couch.dateBegin %>
-</p>
+    <h3><strong>Huespedes:</strong> <%= @couch.maxHosts %></h3>
+  </div>
 
-<p>
-  <strong>Fecha Limite:</strong>
-  <%= @couch.dateEnd %>
-</p>
+  <div class="col-md-6">
+    <h3 class="img-thumbnail"> <%= image_tag( @couch.image , height: '320', width: '320')%></h3>
+  </div>
+</div>
 
-<p>
-  <strong>Huespedes:</strong>
-  <%= @couch.maxHosts %>
-</p>
 
-<p>
-  <strong>Imagen:</strong><br>
+<div class="row">
+  <div class="col-md-12", class: "alert alert-warning" >
+    <h3><strong>Descripción:</strong></h3>
+    <h4 class="img-thumbnail"><%= @couch.description %></h4>
+  </div>
+</div>
 
-  <%= image_tag( @couch.image , height: '320', width: '320')%>
-</p>
 
-<% if user_signed_in? && @couch.is_owner?(current_user) %>
-<%= link_to 'Editar', edit_couch_path(@couch), class: "btn btn-default"%> |                
-<%= link_to 'Eliminar', @couch, method: :delete, data: { confirm: '¿Seguro de querer elimirar el Couch?' }, class: "btn btn-danger" %> |
-<% end %>
-<%= link_to 'Volver', couches_path, class: "btn btn-default"%>
+<div class="row">
+  <div class="col-md-12">
+    <% if user_signed_in? %> 
+      <% if @couch.is_owner?(current_user) %>
+        <%= link_to 'Editar', edit_couch_path(@couch), class: "btn btn-warning"%>  
+        <%= link_to 'Eliminar', @couch, method: :delete, data: { confirm: '¿Seguro de querer elimirar el Couch?' }, class: "btn btn-danger" %><br>
+      <% else %>
+        <%= link_to 'Reservar', new_reservation_path(@couch), class: "btn btn-default"%><br> <!-- TODO crear parametros en el controller de reserva -->
+      <% end %>
+    <% end %>
+    <br>
+    <%= link_to 'Volver', @url_back, class: "btn btn-default"%>
+  </div>
+</div>
+
+
+
+
+
+
+

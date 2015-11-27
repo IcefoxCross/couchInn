@@ -49,6 +49,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    custom_error_message (1.1.1)
     debug_inspector (0.0.2)
     devise (3.5.2)
       bcrypt (~> 3.0)
@@ -156,6 +157,7 @@ PLATFORMS
 DEPENDENCIES
   byebug
   coffee-rails (~> 4.1.0)
+  custom_error_message (~> 1.1, >= 1.1.1)
   devise
   hirb
   jbuilder (~> 2.0)

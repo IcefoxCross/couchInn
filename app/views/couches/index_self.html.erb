@@ -1,4 +1,4 @@
-<h1>Listado de Hospedajes</h1>
+<h1>Mis Hospedajes</h1>
 
   <table class="table table-hover">
     <thead>
@@ -10,7 +10,6 @@
         <div class="col-md-6">
           <th>Nombre</th>
           <th>Tipo</th>
-          <th>Dueño</th>
           <th>Lugar</th>
           <th>Huespedes</th>
           <th>Fecha de Inicio</th>
@@ -33,7 +32,6 @@
           <div class="col-md-6">
             <td><%= couch.name %></td>
             <td><%= couch.type.name %></td>
-            <td><%= couch.user.name %></td>
             <td><%= couch.location %></td>
             <td><%= couch.maxHosts %></td>
             <td><%= couch.dateBegin.strftime('%v') %></td>

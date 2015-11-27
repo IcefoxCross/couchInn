@@ -1,7 +1,7 @@
 class Type < ActiveRecord::Base
 	has_many :couch
 	
-	validates_uniqueness_of :name, :case_sensitive => false
+	validates_uniqueness_of :name, :case_sensitive => false, :message => "^ El nombre ya fue utilizado."
     before_destroy :type_change
     def type_change
         cs=self.couch

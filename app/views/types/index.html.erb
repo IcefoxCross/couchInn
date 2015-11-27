@@ -1,27 +1,39 @@
-<p id="notice"><%= notice %></p>
+<h1>Lista de Tipos</h1>
 
-<h1>Listing Types</h1>
+<div class="row">
+  <div class="col-md-8">
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-  <tbody>
-    <% @types.each do |type| %>
-      <tr>
-        <td><%= type.name %></td>
-        <td><%= link_to 'Ver', type %></td>
-        <td><%= link_to 'Editar', edit_type_path(type) %></td>
-        <td><%= link_to 'Eliminar', type, method: :delete, data: { confirm: '¿Seguro de querer elimirar el Tipo?' }, class: "btn btn-danger" %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <tbody>
+        <% @types.each do |type| %>
+          <tr>
+            <td><h4><%= type.name %></h4></td>
+            <% if type.name == "default" %>
+              <td colspan="3"></td>
+            <% else %>
+    <!--          <td><%= link_to 'Ver', type %></td> --> <td></td> <!-- TODO entas vista(show_type) es completamente al pedo -->
+              <td><%= link_to 'Editar', edit_type_path(type), class: "btn btn-warning" %></td>
+              <td><%= link_to 'Eliminar', type, method: :delete, data: { confirm: '¿Seguro de querer elimirar el Tipo?' }, class: "btn btn-danger" %></td>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+  </div>
+  <div class="col-md-4">
+    <h3>Info</h3>
+    <p>Si elimina un tipo de hospedaje, todos los hospedajes que pertencen a este seran reasignados como de tipo "default" inmediatamnete.</p>
+  </div>
+</div>
 
 <br>
 
-<%= link_to 'Nuevo Tipo', new_type_path %>
+<%= link_to 'Nuevo Tipo', new_type_path, class: "btn btn-default" %>

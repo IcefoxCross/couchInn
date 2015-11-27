@@ -14,6 +14,7 @@ class CouchesController < ApplicationController
   # GET /couches/1
   # GET /couches/1.json
   def show
+    @url_back = request.referrer
   end
 
   # GET /couches/new

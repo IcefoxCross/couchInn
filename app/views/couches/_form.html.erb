@@ -1,50 +1,56 @@
-<%= form_for(@couch) do |f| %>
-  <% if @couch.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@couch.errors.count, "error") %> prohibited this couch from being saved:</h2>
+<div class="row">
+  <div class="col-md-4">
+    <%= form_for(@couch) do |f| %>
 
-      <ul>
-      <% @couch.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% if @couch.errors.any? %>
+        <div class="alert alert-danger">
+          <ul>
+          <% @couch.errors.full_messages.each do |message| %>
+            <li><h5><%= message %></h5></li>
+          <% end %>
+          </ul>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-      <%= f.label "Nombre" %><br>
-    <%= f.text_field :name, class: 'form-control', label: 'Nombre', placeholder: 'Ingrese el nombre' %>
+      <div class="field">
+          <%= f.label "Nombre" %><br>
+        <%= f.text_field :name, class: 'form-control', label: 'Nombre', placeholder: 'Ingrese el nombre' %>
+      </div>
+      <div class="field">
+        <%= f.label "Tipo de hospedaje" %><br>
+        <%= collection_select(:couch, :type_id, Type.all, :id, :name, {}, { class: 'form-control'}) %>
+      </div>
+      <div class="field">
+        <%= f.label "Descripción" %><br>
+        <%= f.text_field :description, class: 'form-control', label: 'Descripción', placeholder: 'Ingrese la descripcion' %>
+      </div>
+      <div class="field">
+        <%= f.label "Lugar" %><br>
+        <%= f.text_field :location, class: 'form-control', label: 'Lugar', placeholder: 'Ingrese la localizacion' %>
+      </div>
+      <div class="field">
+        <%= f.label "Fecha de Inicio" %><br>
+        <%= f.date_select :dateBegin %>
+          
+      </div>
+      <div class="field">
+        <%= f.label "Fecha Final" %><br>
+        <%= f.date_select :dateEnd %>
+      </div>
+      <div class="field">
+        <%= f.label "Número de huéspedes" %><br>
+          <%= f.number_field :maxHosts, class: 'form-control', label: 'maxHosts', placeholder: 'Ingrese el numero maximo de inquilinos' %>
+      </div>
+      <div class="field">
+        <%= f.label "Imagen (insertar enlace http)" %><br>
+        <%= f.url_field :image, class: 'form-control', label: 'Image', placeholder: 'Ingrese el link a la imagen' %>
+      </div>
+      <div class="actions">
+        <%= f.submit "Actualizar", class: "btn btn-default" %>
+      </div>
+
+    <% end %>
   </div>
-  <div class="field">
-    <%= f.label "Tipo de hospedaje" %><br>
-    <%= collection_select(:couch, :type_id, Type.all, :id, :name, {}, { class: 'form-control'}) %>
-  </div>
-  <div class="field">
-    <%= f.label "Descripción" %><br>
-    <%= f.text_field :description, class: 'form-control', label: 'Descripción', placeholder: 'Ingrese la descripcion' %>
-  </div>
-  <div class="field">
-    <%= f.label "Lugar" %><br>
-    <%= f.text_field :location, class: 'form-control', label: 'Lugar', placeholder: 'Ingrese la localizacion' %>
-  </div>
-  <div class="field">
-    <%= f.label "Fecha de Inicio" %><br>
-    <%= f.datetime_select :dateBegin %>
-      
-  </div>
-  <div class="field">
-    <%= f.label "Fecha Final" %><br>
-    <%= f.datetime_select :dateEnd %>
-  </div>
-  <div class="field">
-    <%= f.label "Número de huéspedes" %><br>
-      <%= f.number_field :maxHosts, class: 'form-control', label: 'maxHosts', placeholder: 'Ingrese el numero maximo de inquilinos' %>
-  </div>
-  <div class="field">
-    <%= f.label "Imagen (insertar enlace http)" %><br>
-    <%= f.url_field :image, class: 'form-control', label: 'Image', placeholder: 'Ingrese el link a la imagen' %>
-  </div>
-  <div class="actions">
-    <%= f.submit "Actualizar", class: "btn btn-default" %>
-  </div>
-<% end %>
+</div>
+
+<br>

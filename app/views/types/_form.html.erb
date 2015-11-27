@@ -1,21 +1,25 @@
-<%= form_for(@type) do |f| %>
-  <% if @type.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@type.errors.count, "error") %> prohibited this type from being saved:</h2>
+<div class="row">
+  <div class="col-md-4">
+    <%= form_for(@type) do |f| %>
 
-      <ul>
-      <% @type.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% if @type.errors.any? %>
+        <div class="alert alert-danger">
+          <% @type.errors.full_messages.each do |message| %>
+            <h5><%= message %></h5>
+          <% end %>
+        </div>
       <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-      <%= f.label :nombre %><br>
-      <%= f.text_field :name , required: true, placeholder: 'Ingrese un tipo de Couch'%>
+      <div class="field">
+          <%= f.label :nombre %><br>
+          <%= f.text_field :name , required: true, placeholder: 'Ingrese un tipo de Couch', class:"form-control"%>
+      </div>
+      <div class="actions">
+          <%= f.submit 'Guardar', class: "btn btn-default"%>
+      </div>
+    
+    <% end %>
   </div>
-  <div class="actions">
-      <%= f.submit 'Guardar'%>
-  </div>
-<% end %>
+</div>
+
+<br>

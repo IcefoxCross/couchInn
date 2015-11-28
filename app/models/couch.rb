@@ -38,12 +38,14 @@ class Couch < ActiveRecord::Base
 
   filterrific(
   available_filters: [
-    :search_query,
-    :with_type_id
+    :search_query_name,
+    :with_type_id,
+    :search_query_location,
+    :with_couch_number
     ]
   )
 
-  scope :search_query, lambda { |query|
+  scope :search_query_name, lambda { |query|
     # Searches the students table on the 'first_name' and 'last_name' columns.
     # Matches using LIKE, automatically appends '%' to each term.
     # LIKE is case INsensitive with MySQL, however it is case
@@ -56,6 +58,21 @@ class Couch < ActiveRecord::Base
 
   scope :with_type_id, lambda { |type_ids|
     where(type_id: [*type_ids])
+  }
+
+  scope :search_query_location, lambda { |query|
+    # Searches the students table on the 'first_name' and 'last_name' columns.
+    # Matches using LIKE, automatically appends '%' to each term.
+    # LIKE is case INsensitive with MySQL, however it is case
+    # sensitive with PostGreSQL. To make it work in both worlds,
+    # we downcase everything.
+    return nil  if query.blank?
+
+    where("LOWER(couches.location) LIKE ?", "%#{query}%")
+  }
+
+  scope :with_couch_number, lambda { |couch_numbers|
+    where(maxHosts: [*couch_numbers])
   }
 
   def self.options_for_sorted_by

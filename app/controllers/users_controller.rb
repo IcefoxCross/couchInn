@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:show, :edit, :update, :destroy]
+    before_action :set_user, only: [:show, :edit, :update, :destroy, :premium]
     before_action :authenticate_user!
     before_action :is_premium, only: [:premium]
 
@@ -37,15 +37,15 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/2
   # PATCH/PUT /users/2.json
   def premium  
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
+    #respond_to do |format|
+      #if @user.update(user_params)
+        #format.html { redirect_to @user, notice: 'User was successfully updated.' }
+        #format.json { render :show, status: :ok, location: @user }
+      #else
+        #format.html { render :edit }
+        #format.json { render json: @user.errors, status: :unprocessable_entity }
+      #end
+    #end
   end
 
   # POST /users

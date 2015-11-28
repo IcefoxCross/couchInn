@@ -1,0 +1,18 @@
+<%= form_for(current_user) do |f| %>
+
+  <div class="field">
+      <%= f.label "Nombre del titular de la tarjeta" %><br>
+      <%= f.text_field :card_titular %>
+  </div>
+  <div class="field">
+      <%= f.label "Numero de tarjeta" %><br>
+      <%= f.number_field :card_number %>
+  </div>
+  <div class="field">
+      <%= f.label "Numero de seguridad de la tarjeta" %><br>
+      <%= f.number_field :card_security_number %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Enviar" %>
+  </div>
+<% end %>

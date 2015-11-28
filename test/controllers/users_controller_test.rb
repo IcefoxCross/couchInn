@@ -46,4 +46,25 @@ class UsersControllerTest < ActionController::TestCase
 
     assert_redirected_to users_path
   end
+
+  test "should get premium" do
+    get :premium
+    assert_response :success
+  end
+
+  test "should get create" do
+    get :create
+    assert_response :success
+  end
+
+  test "should get update" do
+    get :update
+    assert_response :success
+  end
+
+  test "should get destroy" do
+    get :destroy
+    assert_response :success
+  end
+
 end

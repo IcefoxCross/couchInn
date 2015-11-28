@@ -25,4 +25,8 @@
   <%= @user.premium %>
 </p>
 
-<%= link_to 'Editar', edit_user_path(@user) %>
+<li><%= link_to 'Editar', edit_user_path(@user) %></li>
+
+<% if !current_user.premium? %>
+<li><%= link_to 'Convertirse en premium', users_premium_path(@user) %></li>
+<% end %>

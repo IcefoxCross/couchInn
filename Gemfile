@@ -35,6 +35,7 @@ gem 'rails-i18n', '~> 4.0', '>= 4.0.5'
 
 gem 'filterrific'
 
+gem 'rails_12factor'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

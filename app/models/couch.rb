@@ -14,8 +14,8 @@ class Couch < ActiveRecord::Base
 	end
 
 	# Recibe como parámetros las fechas en las que se busca 
-  	# que esté libre el couch
-  	def is_free?(from, to)
+  # que esté libre el couch
+  def is_free?(from, to)
     	reservas_del_couch = self.reservations # reservas del couch (por el has_many)
     	reservas_confirmadas = reservas_del_couch.confirmed # solo miramos las confirmadas
 	    reservas_confirmadas = reservas_confirmadas.where('? < end_date', from) # from se copiaría en el lugar de '?'
@@ -24,17 +24,63 @@ class Couch < ActiveRecord::Base
 	    # Retorno true o false si el resultado de lo anterior 
 	    # está vacío o no
 	    return reservas_confirmadas.empty?
-  	end
+  end
 
   	# Retorna los couches que están libres entre 2 fechas
   	# Por una cuestión de simplicidad se realiza iterando sobre 
   	# sobre los couches
-  	def self.free_couches(from, to)
+  def self.free_couches(from, to)
     	result = [] # En result agregaremos los hospedajes libres
     	Couch.all.each do |couch|
       		result << couch if couch.is_free?(from, to) # Agregamos el hospedaje si está libre
     	end
-  	end
+  end
+
+  filterrific(
+  available_filters: [
+    :search_query_name,
+    :with_type_id,
+    :search_query_location,
+    :with_couch_number
+    ]
+  )
+
+  scope :search_query_name, lambda { |query|
+    # Searches the students table on the 'first_name' and 'last_name' columns.
+    # Matches using LIKE, automatically appends '%' to each term.
+    # LIKE is case INsensitive with MySQL, however it is case
+    # sensitive with PostGreSQL. To make it work in both worlds,
+    # we downcase everything.
+    return nil  if query.blank?
+
+    where("LOWER(couches.name) LIKE ?", "%#{query}%")
+  }
+
+  scope :with_type_id, lambda { |type_ids|
+    where(type_id: [*type_ids])
+  }
+
+  scope :search_query_location, lambda { |query|
+    # Searches the students table on the 'first_name' and 'last_name' columns.
+    # Matches using LIKE, automatically appends '%' to each term.
+    # LIKE is case INsensitive with MySQL, however it is case
+    # sensitive with PostGreSQL. To make it work in both worlds,
+    # we downcase everything.
+    return nil  if query.blank?
+
+    where("LOWER(couches.location) LIKE ?", "%#{query}%")
+  }
+
+  scope :with_couch_number, lambda { |couch_numbers|
+    where(maxHosts: [*couch_numbers])
+  }
+
+  def self.options_for_sorted_by
+    [
+      ['Nombre (a-z)', 'name_asc'],
+      ['Tipo (a-z)', 'type_name_asc']
+    ]
+  end
 
   private
   def consistent_dates

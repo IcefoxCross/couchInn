@@ -33,6 +33,11 @@ gem 'custom_error_message', '~> 1.1', '>= 1.1.1'
 
 gem 'rails-i18n', '~> 4.0', '>= 4.0.5'
 
+gem 'filterrific'
+
+gem 'rails_12factor'
+
+ruby "2.2.0"
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

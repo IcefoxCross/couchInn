@@ -1,0 +1,40 @@
+<div class="panel panel-default">
+  <div class="panel-body bg-success">
+
+    <%= form_for_filterrific @filterrific, class: "form-inline" do |f| %>
+          <%= f.label "Nombre" %>
+          <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+          <%= f.text_field(
+            :search_query_name,
+            class: 'filterrific-periodically-observed'
+          ) %>
+
+          <%= f.label "Tipo" %>
+          <%= f.select(
+            :with_type_id,
+            @filterrific.select_options[:with_type_id],
+            { include_blank: '- Todos -' }
+          ) %>
+
+          <%= f.label "Lugar" %>
+          <%# give the search field the 'filterrific-periodically-observed' class for live updates %>
+          <%= f.text_field(
+            :search_query_location,
+            class: 'filterrific-periodically-observed'
+          ) %>
+
+          <%= f.label "Número de huespedes" %>
+          <%= f.number_field(
+            :with_couch_number,
+            class: 'filterrific-periodically-observed'
+          ) %>
+
+          <%= link_to(
+            'Resetear filtros',
+            reset_filterrific_url, class: "btn btn-default"
+          ) %>
+        <%# add an automated spinner to your form when the list is refreshed %>
+        <%= render_filterrific_spinner %>
+    <% end %>
+  </div>
+</div>

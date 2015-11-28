@@ -30,7 +30,7 @@ placeholder: 'Ingrese el nombre' %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label "Contraseña" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> caracteres mínimo)</em>
     <% end %><br />
@@ -38,12 +38,12 @@ placeholder: 'Ingrese el nombre' %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label "Confirmar contraseña" %><br />
     <%= f.password_field :password_confirmation, required: true, autocomplete: "off" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Crear cuenta" %>
   </div>
 <% end %>
 

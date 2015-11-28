@@ -1,0 +1,20 @@
+<p>El equipo de CouchInn descontará un solo pago para activar su membresía premium</p>
+
+<%= form_for(@user) do |f| %>
+
+  <div class="field">
+      <%= f.label "Nombre del titular de la tarjeta" %><br>
+      <%= f.text_field :card_titular %>
+  </div>
+  <div class="field">
+      <%= f.label "Numero de cuenta (16 digitos)" %><br>
+      <%= f.number_field :card_number %>
+  </div>
+  <div class="field">
+      <%= f.label "Numero de seguridad (4 digitos)" %><br>
+      <%= f.number_field :card_security_number %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Enviar" %>
+  </div>
+<% end %>

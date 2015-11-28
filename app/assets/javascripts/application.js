@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require filterrific/filterrific-jquery
 
 jQuery(function($) {
 $("tr[data-link]").click(function() {

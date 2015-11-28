@@ -3,6 +3,7 @@ class Type < ActiveRecord::Base
 	
 	validates_uniqueness_of :name, :case_sensitive => false, :message => "^ El nombre ya fue utilizado."
     before_destroy :type_change
+
     def type_change
         cs=self.couch
         t=::Type.first
@@ -10,5 +11,9 @@ class Type < ActiveRecord::Base
             c.type=t
             c.save
         end
+    end
+
+    def self.options_for_select
+      order('LOWER(name)').map { |e| [e.name, e.id] }
     end
 end

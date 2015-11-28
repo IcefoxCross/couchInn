@@ -1,4 +1,24 @@
 Rails.application.routes.draw do
+  get 'users/index'
+
+  get 'users/show'
+
+  get 'users/new'
+
+  get 'users/edit'
+
+  get 'users/premium'
+
+  get 'users/create'
+
+  get 'users/update'
+
+  get 'users/destroy'
+
+  get 'users/premium'
+
+  resources :reservations
+
   devise_for :users, controllers: { registrations: "registrations" }
 
   devise_scope :user do
@@ -10,7 +30,11 @@ Rails.application.routes.draw do
   resources :users
   resources :couches
 
-  resources :reservations
+  resources :users do
+    member do
+      get 'premium'
+    end
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :reservations
   devise_for :users, controllers: { registrations: "registrations" }
 
   devise_scope :user do
@@ -10,6 +9,9 @@ Rails.application.routes.draw do
   resources :types
   resources :users
   resources :couches
+
+  resources :reservations
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -19,6 +21,12 @@ Rails.application.routes.draw do
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
   get '/couches_self', to: 'couches#index_self'
+
+  get '/reservations_self', to: 'reservations#index_self'
+
+  get '/reservations/new/:couch_id', to: 'reservations#new', as: 'new_new_reservation'
+
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

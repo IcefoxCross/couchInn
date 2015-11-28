@@ -7,6 +7,10 @@ class ReservationsController < ApplicationController
     @reservations = Reservation.all
   end
 
+  def index_self
+    @reservations = Reservation.where(user: current_user).paginate(:page => params[:page], :per_page => 10)
+  end
+
   # GET /reservations/1
   # GET /reservations/1.json
   def show
@@ -15,6 +19,7 @@ class ReservationsController < ApplicationController
   # GET /reservations/new
   def new
     @reservation = Reservation.new
+    @couch = Couch.find(params[:couch_id])
   end
 
   # GET /reservations/1/edit
@@ -25,6 +30,7 @@ class ReservationsController < ApplicationController
   # POST /reservations.json
   def create
     @reservation = Reservation.new(reservation_params)
+    @reservation.user_id = current_user.id
 
     respond_to do |format|
       if @reservation.save

@@ -1,5 +1,35 @@
-<h1>Crear Reserva para el Hospedaje: <%= @couch.name %></h1>
+<div class="row">
+  <div class="col-md-12">
+		<h1>Solicitar Reserva para el Hospedaje:<br> <%= @reservation.couch.name %></h1>
+		<!-- <h1>Crear Reserva para el Hospedaje: </h1> -->
+  </div>
+</div>
 
-<%= render 'form' %>
+<div class="row">
+  <div class="col-md-6">
 
-<%= link_to 'Volver', :back, class: "btn btn-default"%>
+		<h4>El Hospedaje se encuentra siponible entre las fechas:</h4>
+		<h4><strong><%= @reservation.couch.dateBegin %> y <%= @reservation.couch.dateEnd %></strong></h4>
+		<br>
+		<%= render 'form' %>
+  </div>
+
+  <div class="col-md-3">
+    <h4><strong>Tipo:</strong> <%= @reservation.couch.type.name %></h4>
+    <h4><strong>Lugar:</strong> <%= @reservation.couch.location %></h4>
+    <h4><strong>Huespedes:</strong> <%= @reservation.couch.maxHosts %></h4>
+  </div>
+  <div class="col-md-3">
+    <h4 class="img-thumbnail"> <%= image_tag( @reservation.couch.image , height: '200', width: '200')%></h4>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+  	<%= link_to 'Volver', :back, class: "btn btn-default"%>
+  </div>
+  <div class="col-md-6">
+    <h4><strong>Descripción:</strong></h4>
+    <h4 class="img-thumbnail"><%= @reservation.couch.description %></h4>
+  </div>
+</div>
+

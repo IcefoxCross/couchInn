@@ -85,10 +85,10 @@ class Couch < ActiveRecord::Base
   private
   def consistent_dates
     if (self.dateBegin <= Date.current)
-      errors.add(:dateBegin, '^ La Fecha de Inicio tiene que ser mayor a la fecha actual')
+      errors.add(:dateBegin, '^ La Fecha de Inicio tiene que ser mayor a la fecha actual.')
     end
     if (self.dateBegin >= self.dateEnd)
-      errors.add(:dateEnd, '^ La Fecha de Inicio tiene que ser menor a la Fecha Final')
+      errors.add(:dateEnd, '^ La Fecha de Inicio tiene que ser menor a la Fecha Final.')
     end
   end
 

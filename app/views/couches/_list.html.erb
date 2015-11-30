@@ -16,9 +16,6 @@
             <th>Fecha de Inicio</th>
             <th>Fecha Limite</th>
           </div> 
-          <div class="col-md-4">
-            <th>Descripción</th>
-          </div> 
         </tr>
       </div> 
       </thead>
@@ -34,18 +31,15 @@
                 <td></td>
               <% end %>
             </div> 
-            <div class="col-md-6">
-              <td><%= couch.name %></td>
-              <td><%= couch.type.name %></td>
-              <td><%= couch.user.name %></td>
-              <td><%= couch.location %></td>
-              <td><%= couch.maxHosts %></td>
-              <td><%= couch.dateBegin.strftime('%v') %></td>
-              <td><%= couch.dateEnd.strftime('%v') %></td>
-            </div> 
-            <div class="col-md-4">
-              <td><%= couch.description.truncate(40, :separator => ' ') %></td>
-            </div> 
+            <div class="col-md-10">
+              <td><h4><%= couch.name %></h4></td>
+              <td><h4><%= couch.type.name %></h4></td>
+              <td><h4><%= couch.user.name %></h4></td>
+              <td><h4><%= couch.location %></h4></td>
+              <td><h4><%= couch.maxHosts %></h4></td>
+              <td><h4><%= couch.dateBegin %></h4></td>
+              <td><h4><%= couch.dateEnd %></h4></td>
+            </div>  
           </tr>
         <% end %>
       </div> 

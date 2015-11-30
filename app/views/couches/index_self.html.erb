@@ -1,6 +1,6 @@
 <h1>Mis Hospedajes</h1>
 
-  <table class="table table-hover">
+  <table id="couch_t", class="table table-hover">
     <thead>
     <div class="row">
       <tr>
@@ -30,7 +30,7 @@
               <td class="img-thumbnail"><%= image_tag( couch.image , height: '80', width: '80')%></td>
           </div> 
           <div class="col-md-7">
-            <td><h4><%= couch.name %></h4></td>
+            <td><h4><%= link_to couch.name, couch_path(couch) %></h4></td>
             <td><h4><%= couch.type.name %></h4></td>
             <td><h4><%= couch.location %></h4></td>
             <td><h4><%= couch.maxHosts %></h4></td>

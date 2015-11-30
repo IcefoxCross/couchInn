@@ -51,11 +51,11 @@ Reservation.find_or_create_by(start_date: Date.current+1.year+3.month+1.day, end
 # para c3 - conflicto R2 se superpone a R1 por detras
 Reservation.find_or_create_by(start_date: Date.current+1.year+1.month+1.day, end_date: Date.current+1.year+1.month+16.day, confirmed: false, user: user1, couch: c3) #R1
 Reservation.find_or_create_by(start_date: Date.current+1.year+1.month+10.day, end_date: Date.current+1.year+1.month+30.day, confirmed: false, user: user3, couch: c3) #R2
-Reservation.find_or_create_by(start_date: Date.current+1.year+5.month+1.day, end_date: Date.current+1.year+6.month+1.day, confirmed: false, user: user3, couch: c3) #R3
+Reservation.find_or_create_by(start_date: Date.current+1.year+5.month+1.day, end_date: Date.current+1.year+6.month+1.day, confirmed: true, user: user3, couch: c3) #R3
 # para c4 - conflicto R2 se superpone a R1 por delante
 Reservation.find_or_create_by(start_date: Date.current+1.year+2.month+10.day, end_date: Date.current+1.year+2.month+30.day, confirmed: false, user: user1, couch: c4) #R1
 Reservation.find_or_create_by(start_date: Date.current+1.year+2.month+1.day, end_date: Date.current+1.year+2.month+16.day, confirmed: false, user: user3, couch: c4) #R2
 Reservation.find_or_create_by(start_date: Date.current+1.year+5.month+1.day, end_date: Date.current+1.year+6.month+1.day, confirmed: false, user: user3, couch: c4) #R3
 # para c5 - conflicto R2 contiene a R1
 Reservation.find_or_create_by(start_date: Date.current+1.year+5.month+11.day, end_date: Date.current+1.year+5.month+20.day, confirmed: false, user: user1, couch: c5) #R1
-Reservation.find_or_create_by(start_date: Date.current+1.year+5.month+1.day, end_date: Date.current+1.year+5.month+30.day, confirmed: false, user: user2, couch: c5) #R2
+Reservation.find_or_create_by(start_date: Date.current+1.year+5.month+1.day, end_date: Date.current+1.year+5.month+30.day, confirmed: true, user: user2, couch: c5) #R2

@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 	has_many :reservations, dependent: :destroy
 
 	validate :edad_minima
+	validate :tarjeta
 
 	def get_age
 		d = Date.today.year - self.age.year
@@ -16,4 +17,9 @@ class User < ActiveRecord::Base
 	def edad_minima
 		errors.add(:age, "Tenes que tener como minimo 18 años de edad para usar el servicio.") if self.get_age < 18
 	end
+	
+   def tarjeta
+       errors.add(:card_number, "Numero de tarjeta invalido.") if self.card_number.to_s.length < 16
+       errors.add(:card_security_number, "Numero de seguridad invalido.")if self.card_security_number.to_s.length < 4
+   end
 end

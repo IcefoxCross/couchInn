@@ -37,8 +37,7 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/2
   # PATCH/PUT /users/2.json
   def premium
-    @user.premium = true
-    @user.save  
+    @user=User.find(params[:id])
     #respond_to do |format|
       #if @user.update(user_params)
         #format.html { redirect_to @user, notice: 'User was successfully updated.' }

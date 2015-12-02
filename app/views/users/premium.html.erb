@@ -14,6 +14,12 @@
       <%= f.label "Numero de seguridad (4 digitos)" %><br>
       <%= f.number_field :card_security_number %>
   </div>
+
+  <div class="field">
+     <%= f.label "Deseo convertirme en premium y acepto las condiciones de serlo" %>
+     <%= f.check_box :premium, required: true %>
+ </div>
+<%= f.hidden_field :id %>
   <div class="actions">
     <%= f.submit "Enviar" %>
   </div>

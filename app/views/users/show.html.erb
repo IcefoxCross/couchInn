@@ -1,32 +1,22 @@
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="col-md-6">
+    <!-- <h3><strong>Nombre:</strong></h3> -->
+    <h1>
+      <% if current_user.admin? %>
+        <span class="glyphicon glyphicon-king" aria-hidden="true"></span>
+      <% end %>
+      <% if !current_user.premium? %>
+        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+      <% end %>
+      <%= @user.name %> <%= @user.lastName %>
+    </h1>
+    <br>
 
-<p>
-  <strong>Nombre:</strong>
-  <%= @user.name %>
-</p>
+    <h3><strong>Contacto:</strong> <%= @user.email %></h3>
 
-<p>
-  <strong>Apellido:</strong>
-  <%= @user.lastName %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Admin:</strong>
-  <%= @user.admin %>
-</p>
-
-<p>
-  <strong>Premium:</strong>
-  <%= @user.premium %>
-</p>
-
-<li><%= link_to 'Editar', edit_user_path(@user) %></li>
-
-<% if !current_user.premium? %>
-<li><%= link_to 'Convertirse en premium', premium_user_path(@user) %></li>
-<% end %>
+    <%= link_to 'Editar', edit_user_path(@user) , class: "btn btn-link"%>
+    <% if !current_user.premium? %>
+      <%= link_to 'Convertirse en premium', premium_user_path(@user) , class: "btn btn-link"%>
+    <% end %>
+  </div>
+</div>

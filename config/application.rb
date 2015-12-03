@@ -26,5 +26,7 @@ module CouchInn
     config.paths['app/views'] << "app/views/devise"
 
     config.i18n.default_locale = 'es'
+
+    config.assets.paths << "#{Rails}/vendor/assets/fonts"
   end
 end

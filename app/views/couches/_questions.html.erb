@@ -24,20 +24,27 @@
         <% if question.answer == nil  %>
           <% if @couch.is_owner?(current_user) %>
           <%= link_to 'Eliminar', question, method: :delete, data: { confirm: '¿Seguro de querer elimirar la Pregunta?' }, class: "btn btn-danger" %><br>
-            <%= form_for(Question.new) do |f| %>
+
+          <br>
+            <%= form_for question, method: :patch do |f| %>
                <div class="field">
-                  <%= f.label "Responder" %><br>
-                  <%= f.text_area :answer, required: true , class: 'form-control', :rows => 2, label: 'Responder', placeholder: 'Ingrese la respuesta' %>
+                  <%= f.text_area :answer, required: true , class: 'form-control', :rows => 2, label: 'respuesta', placeholder: 'Ingrese la respuesta' %>
                </div>
                <div class="actions">
-                  <%= f.submit "Enviar", class: "btn btn-default" %>
+                  <%= f.submit "Responder", class: "btn btn-default" %>
                </div>
             <% end %>
           <% else %>
             <p>Sin responder</p>
+            <% if question.user_id == current_user.id %>
+              <%= link_to 'Eliminar', question, method: :delete, data: { confirm: '¿Seguro de querer elimirar la Pregunta?' }, class: "btn btn-danger" %><br>
+            <% end %>
           <% end %>
         <% else %>
           <p><%= question.answer %></p>
+          <% if @couch.is_owner?(current_user) || question.user_id == current_user.id %>
+            <%= link_to 'Eliminar', question, method: :delete, data: { confirm: '¿Seguro de querer elimirar la Pregunta?' }, class: "btn btn-danger" %><br>
+          <% end %>
         <% end %>
       </div>
     </li>

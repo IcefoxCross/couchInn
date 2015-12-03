@@ -25,12 +25,17 @@
     <tbody>
     <div class="row">
       <% @couches.each do |couch| %>
+        <% @unanswered_questions = Question.where(couch: couch, answer: nil).count %>
         <tr data-link="<%= couch_path(couch) %>">
           <div class="col-md-2">
               <td class="img-thumbnail"><%= image_tag( couch.image , height: '80', width: '80')%></td>
           </div> 
           <div class="col-md-7">
-            <td><h4><%= link_to couch.name, couch_path(couch) %></h4></td>
+            <td><h4><%= link_to couch.name, couch_path(couch) %></h4>
+              <% if @unanswered_questions > 0 %>
+                <h4><span class="label label-warning"><%= @unanswered_questions %> Preguntas Pendientes</span></h4>
+              <% end %>
+            </td>
             <td><h4><%= couch.type.name %></h4></td>
             <td><h4><%= couch.location %></h4></td>
             <td><h4><%= couch.maxHosts %></h4></td>

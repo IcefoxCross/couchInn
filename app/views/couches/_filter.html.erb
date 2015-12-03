@@ -33,6 +33,18 @@
             'Resetear filtros',
             reset_filterrific_url, class: "btn btn-default"
           ) %>
+
+          <%= f.label "Fecha de inicio"%>
+          <%= f.date_field(
+            :with_date_begin,
+            class: 'filterrific-periodically-observed'
+          ) %>
+
+          <%= f.label "Fecha limite"%>
+          <%= f.date_field(
+            :with_date_end,
+            class: 'filterrific-periodically-observed'
+          ) %>
         <%# add an automated spinner to your form when the list is refreshed %>
         <%= render_filterrific_spinner %>
     <% end %>

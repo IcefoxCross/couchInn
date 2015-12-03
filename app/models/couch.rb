@@ -42,7 +42,9 @@ class Couch < ActiveRecord::Base
     :search_query_name,
     :with_type_id,
     :search_query_location,
-    :with_couch_number
+    :with_couch_number,
+    :with_date_begin,
+    :with_date_end
     ]
   )
 
@@ -74,6 +76,14 @@ class Couch < ActiveRecord::Base
 
   scope :with_couch_number, lambda { |couch_numbers|
     where(maxHosts: [*couch_numbers])
+  }
+
+  scope :with_date_begin, lambda { |dates_begin|
+    where(dateBegin: [*dates_begin])
+  }
+
+  scope :with_date_end, lambda { |dates_end|
+    where(dateEnd: [*dates_end])
   }
 
   def self.options_for_sorted_by

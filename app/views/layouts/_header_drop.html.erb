@@ -18,6 +18,9 @@
 
       <div class="btn-toolbar pull-right">
 
+        <% @unanswered_questions = Question.joins(:couch).where('couches.user'=> current_user, answer: nil).count %>
+
+
         <% if !user_signed_in? %>
            <%= link_to 'Ingresar', login_path, class: "btn btn-default"%>
         <% else %>
@@ -34,6 +37,11 @@
               <li><%= link_to 'Mi Cuenta', current_user %></li>
 
               <li role="separator" class="divider"></li>
+              <% if @unanswered_questions > 0 %>
+                <li><%= link_to @unanswered_questions.to_s+' Preguntas Pendientes', couches_self_path, class: "btn btn-warning" %></li>
+                <br>
+                <li role="separator" class="divider"></li>
+              <% end %>
 
               <% if current_user.admin? %>
                 <li><%= link_to 'Tipos de Couch', types_path %></li>

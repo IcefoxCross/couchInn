@@ -14,44 +14,43 @@
 <% end %>
 
 <% if @couch.questions.count > 0 %>
-  <ul id="toggle-ask">
-    <% @couch.questions.each do |question| %>
-    <li>
-      <h3><%= question.ask %></h3>
-      <h4>por <%= question.user.name %></h4>
-      <span>+</span>
-      <div class="panel">
-        <% if question.answer == nil  %>
-          <% if @couch.is_owner?(current_user) %>
-          <%= link_to 'Eliminar', question, method: :delete, data: { confirm: '¿Seguro de querer elimirar la Pregunta?' }, class: "btn btn-danger" %><br>
-
-          <br>
-            <%= form_for question, method: :patch do |f| %>
-               <div class="field">
-                  <%= f.text_area :answer, required: true , class: 'form-control', :rows => 2, label: 'respuesta', placeholder: 'Ingrese la respuesta' %>
-               </div>
-               <div class="actions">
-                  <%= f.submit "Responder", class: "btn btn-default" %>
-               </div>
-            <% end %>
-          <% else %>
-            <p>Sin responder</p>
-            <% if question.user_id == current_user.id %>
-              <%= link_to 'Eliminar', question, method: :delete, data: { confirm: '¿Seguro de querer elimirar la Pregunta?' }, class: "btn btn-danger" %><br>
-            <% end %>
-          <% end %>
-        <% else %>
-          <p><%= question.answer %></p>
-          <% if @couch.is_owner?(current_user) || question.user_id == current_user.id %>
-            <%= link_to 'Eliminar', question, method: :delete, data: { confirm: '¿Seguro de querer elimirar la Pregunta?' }, class: "btn btn-danger" %><br>
-          <% end %>
+    <ul id="toggle-ask">
+        <% @couch.questions.each do |question| %>
+            <li>
+                <h3><%= question.ask %></h3>
+                <h4>por <%= question.user.name %></h4>
+                <span>+</span>
+                <div class="panel">
+                    <% if question.answer == nil  %>
+                        <% if user_signed_in? && @couch.is_owner?(current_user) %>
+                            <%= link_to 'Eliminar', question, method: :delete, data: { confirm: '¿Seguro de querer elimirar la Pregunta?' }, class: "btn btn-danger" %><br>
+                            <br>
+                            <%= form_for question, method: :patch do |f| %>
+                                <div class="field">
+                                    <%= f.text_area :answer, required: true , class: 'form-control', :rows => 2, label: 'respuesta', placeholder: 'Ingrese la respuesta' %>
+                                </div>
+                                <div class="actions">
+                                  <%= f.submit "Responder", class: "btn btn-default" %>
+                                </div>
+                            <% end %>
+                        <% else %>
+                            <p>Sin responder</p>
+                            <% if user_signed_in? && question.user_id == current_user.id %>
+                                <%= link_to 'Eliminar', question, method: :delete, data: { confirm: '¿Seguro de querer elimirar la Pregunta?' }, class: "btn btn-danger" %><br>
+                            <% end %>
+                        <% end %>
+                    <% else %>
+                        <p><%= question.answer %></p>
+                        <% if user_signed_in? %>
+                            <% if @couch.is_owner?(current_user) || question.user_id == current_user.id %>
+                                <%= link_to 'Eliminar', question, method: :delete, data: { confirm: '¿Seguro de querer elimirar la Pregunta?' }, class: "btn btn-danger" %><br>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                </div>
+            </li>
         <% end %>
-      </div>
-    </li>
-    <% end %>
-  </ul>
-
+    </ul>
 <% else %>
   <h5>No se realizaron preguntas en este Hospedaje.</h5>
-
 <% end %>

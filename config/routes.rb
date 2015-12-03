@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   resources :types
   resources :users
   resources :couches
+  resources :questions
 
   resources :users do
     member do

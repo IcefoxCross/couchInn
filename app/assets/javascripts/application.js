@@ -16,21 +16,43 @@
 //= require_tree .
 //= require filterrific/filterrific-jquery
 
+
+
+
 jQuery(function($) {
-	$("tr[data-link]").click(function() {
-		window.location = $(this).data('link');
+
+	//filas clickeables en el index de couches
+	$(document).ready(function () {
+		$("tr[data-link]").click(function() {
+			window.location = $(this).data('link');
+		});
 	});
+
+	//preguntas toggleables en el show de couch
+	$(document).ready(function () {
+	    
+	    $('#toggle-ask li').click(function () {
+	        var text = $(this).children('div.panel');
+	        if (text.is(':hidden')) {
+	            text.slideDown('200');
+	            $(this).children('span').html('-');        
+	        } else {
+	            text.slideUp('200');
+	            $(this).children('span').html('+');        
+	        }
+	        $(this).children('div.panel').children('form').children('div.field').children('textarea').focus();
+	    });
+	});
+
 })
 
-// jQuery(function($) {
-// $(document).ready(function() {
-
-//     $('#couch_t tr').click(function() {
-//         var href = $(this).find("a").attr("href");
-//         if(href) {
-//             window.location = href;
-//         }
-//     });
-
-// });
-// })
+	function showonlyone(thechosenone) {
+         $('.newboxes').each(function(index) {
+              if ($(this).attr("id") == thechosenone) {
+                   $(this).show(200);
+              }
+              else {
+                   $(this).hide(600);
+              }
+         });
+    }

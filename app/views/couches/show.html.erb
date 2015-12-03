@@ -47,9 +47,21 @@
   </div>
 </div>
 
+<br>
 
+<div class="row">
+  <div id="derecha", class="col-md-6">
+    <a id="myHeader1" href="javascript:showonlyone('newboxes1');" class= "btn btn-default">Preguntas</a>
+    
+  </div>
+  <div class="col-md-6">
+    <a id="myHeader2" href="javascript:showonlyone('newboxes2');" class= "btn btn-default">Calificaciones</a>
+    
+  </div>
+  <div class="col-md-12">
+    <div class="newboxes" id="newboxes1"><%= render 'questions' %></div>
+    <div class="newboxes" id="newboxes2"><%= render 'califications' %></div>
+  </div>
+</div>
 
-
-
-
-
+ <br>

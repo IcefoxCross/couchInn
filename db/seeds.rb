@@ -11,6 +11,7 @@ User.destroy_all
 Couch.destroy_all
 Type.destroy_all
 Reservation.destroy_all
+Question.destroy_all
 
 # Tipos de couch
 default	= Type.find_or_create_by(name: 'default')
@@ -59,3 +60,10 @@ Reservation.find_or_create_by(start_date: Date.current+1.year+5.month+1.day, end
 # para c5 - conflicto R2 contiene a R1
 Reservation.find_or_create_by(start_date: Date.current+1.year+5.month+11.day, end_date: Date.current+1.year+5.month+20.day, confirmed: false, user: user1, couch: c5) #R1
 Reservation.find_or_create_by(start_date: Date.current+1.year+5.month+1.day, end_date: Date.current+1.year+5.month+30.day, confirmed: true, user: user2, couch: c5) #R2
+
+#Preguntas
+# para c5
+Question.find_or_create_by(ask: '¿La hamaca es muy verde?', answer: 'Tiene un poco de amarillo tambien.', couch: c5, user: user2)
+Question.find_or_create_by(ask: '¿La hamaca esta limpia?', answer: 'Sí', couch: c5, user: user2)
+Question.find_or_create_by(ask: '¿Esta a la intemperie?', answer: 'No', couch: c5, user: user1)
+Question.find_or_create_by(ask: '¿Esta en el centro?', couch: c5, user: user1)

@@ -15,3 +15,56 @@
 .pagination>a{
 	display:inline-block;padding-left:0;margin:20px 0;border-radius:4px; display:inline; position:relative;float:left;padding:6px 12px;margin-left:-1px;line-height:1.42857143;color:#96ac3c;text-decoration:none;background-color:#fff;border:1px solid #D3DCB0; z-index:3;color:#687A20;background-color:#EAF2CA;border-color:#D3DCB0
 }
+
+#couch_t tr{
+	cursor:pointer;
+}
+
+#derecha{
+    text-align: right;    
+}
+
+#newboxes2 {
+    display: none;
+}
+
+#toggle-ask {
+    list-style:none;    
+    font-family:arial;
+    font-size:11px;
+    margin:0;
+    padding:0;
+    /*width:300px;*/
+}
+    #toggle-ask li {
+        margin:10px;
+        border-bottom:1px solid #ccc;
+        position:relative;
+        cursor:pointer;
+    }
+    
+    #toggle-ask h3 {
+        margin:0;
+        font-size:18px;
+    }
+    #toggle-ask span {
+        position:absolute;
+        right:5px; top:0;
+        color:#999;
+        font-size:18px;
+    }
+    
+    #toggle-ask .panel {
+        margin:5px 0;
+        display:none;
+    } 
+
+    #toggle-ask p {
+        font-size:14px;
+    } 
+
+    #toggle-ask h4 {
+        color:#aaa;
+        font-size:16px;
+    }
+

@@ -5,7 +5,7 @@
       <% if current_user.admin? %>
         <span class="glyphicon glyphicon-king" aria-hidden="true"></span>
       <% end %>
-      <% if !current_user.premium? %>
+      <% if current_user.premium? %>
         <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
       <% end %>
       <%= @user.name %> <%= @user.lastName %>

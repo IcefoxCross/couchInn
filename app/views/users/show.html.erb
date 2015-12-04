@@ -13,8 +13,7 @@
     <br>
 
     <h3><strong>Contacto:</strong> <%= @user.email %></h3>
-
-    <%= link_to 'Editar', edit_user_path(@user) , class: "btn btn-link"%>
+    <%= link_to 'Editar', edit_user_registration_path, class: "btn btn-link"%>
     <% if !current_user.premium? %>
       <%= link_to 'Convertirse en premium', premium_user_path(@user) , class: "btn btn-link"%>
     <% end %>

@@ -1,19 +1,5 @@
 Rails.application.routes.draw do
-  get 'users/index'
 
-  get 'users/show'
-
-  get 'users/new'
-
-  get 'users/edit' 
-
-  get 'users/premium'
-
-  get 'users/create'
-
-  get 'users/update'
-
-  get 'users/destroy'
 
   get 'users/premium'
 
@@ -32,7 +18,7 @@ Rails.application.routes.draw do
   resources :questions
   resources :rating_couches
 
-  resources :users do
+  resources :users, except: [:edit] do
     member do
       get 'premium'
     end
@@ -51,7 +37,6 @@ Rails.application.routes.draw do
   get '/reservations_self', to: 'reservations#index_self'
 
   get '/reservations/new/:couch_id', to: 'reservations#new', as: 'new_new_reservation'
-
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

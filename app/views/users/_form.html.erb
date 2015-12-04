@@ -1,22 +1,21 @@
 <%= form_for(@user) do |f| %>
 
-  <div class="field">
+  <div class="field form-group">
     <%= f.label "Nombre" %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name ,required: true,
+placeholder: 'Ingrese el nombre' %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label "Apellido" %><br>
-    <%= f.text_field :lastName %>
+    <%= f.text_field :lastName ,required: true, placeholder: 'Ingrese el apellido' %>
   </div>
-  <div class="field">
+  <div class="field form-group">
     <%= f.label :email %><br>
       <%= f.email_field :email %>
   </div>
-  <div class="field">
-    <%= f.label "Contraseña (entre 5 y 16 caracteres)" %><br>
-      <%= f.password_field :password %>
-  </div>
   <div class="actions">
-    <%= f.submit "Enviar" %>
+    <%= f.submit "Enviar" , class: "btn btn-default"%>
   </div>
 <% end %>
+
+<%= link_to 'Cambiar contraseña', edit_user_password_path, class: "btn btn-link" %>

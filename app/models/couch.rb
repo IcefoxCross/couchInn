@@ -4,6 +4,7 @@ class Couch < ActiveRecord::Base
 	belongs_to :user
 	has_many :reservations, dependent: :destroy
   has_many :questions, dependent: :destroy
+  has_many :rating_couches, dependent: :destroy
 
   validate :consistent_dates
   validate :consistent_maxHosts

@@ -30,6 +30,8 @@ class CouchesController < ApplicationController
   # GET /couches/1.json
   def show
     @url_back = request.referrer
+    # si el current_user puede calificar @puede_calificar es mayor a 0
+    @puede_calificar = Reservation.where("couch_id = :c AND user_id = :u AND confirmed = :t AND end_date < :d",{c: @couch.id, u: current_user.id, t: true, d: Date.current}).count
   end
 
   # GET /couches/new

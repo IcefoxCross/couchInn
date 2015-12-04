@@ -1,0 +1,17 @@
+<%= form_for(@rating_couch) do |f| %>
+  <% if @rating_couch.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rating_couch.errors.count, "error") %> prohibited this rating_couch from being saved:</h2>
+
+      <ul>
+      <% @rating_couch.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

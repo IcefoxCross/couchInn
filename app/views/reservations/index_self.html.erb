@@ -16,17 +16,21 @@
 
       <tbody>
         <% @reservations.each do |reservation| %>
-          <tr>
-            <td><h4><%= reservation.couch.name %></h4></td>
-            <td><h4><%= reservation.start_date %></h4></td>
-            <td><h4><%= reservation.end_date %></h4></td>
-            <% if reservation.confirmed? %>
-              <td><h4><span class="label label-default">Confirmado</span><h4></td>
-            <% else %>
-              <td><h4><span class="label label-warning">En espera</span><h4></td>
-            <% end %>
-            <td><%= link_to 'Eliminar', reservation, method: :delete, data: { confirm: '¿Seguro de querer elimirar la Reserva?' }, class: "btn btn-danger" %></td>
-          </tr>
+          <% if !(reservation.end_date < Date.current && !reservation.confirmed?) %>
+            <tr>
+              <td><h4><%= reservation.couch.name %></h4></td>
+              <td><h4><%= reservation.start_date %></h4></td>
+              <td><h4><%= reservation.end_date %></h4></td>
+              <% if reservation.confirmed? %>
+                <td><h4><span class="label label-default">Confirmado</span><h4></td>
+              <% else %>
+                <td><h4><span class="label label-warning">En espera</span><h4></td>
+              <% end %>
+              <% if reservation.start_date > Date.current %>
+                <td><%= link_to 'Cancelar', reservation, method: :delete, data: { confirm: '¿Seguro de querer elimirar la Reserva?' }, class: "btn btn-danger" %></td>
+              <% end %>
+            </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
@@ -34,6 +38,7 @@
   </div>
   <div class="col-md-4">
     <h3>Info</h3>
-    <p>Si elimina una reserva blaaaaa blaaaaa blaaaa asblaaaaa blaaaaa blaaaa asblaaaaa blaaaaa blaaaa asblaaaaa blaaaaa blaaaa asblaaaaa blaaaaa blaaaa asblaaaaa blaaaaa blaaaa asblaaaaa blaaaaa blaaaa as</p>
+    <p>Si cancela una reserva esta se perdera sin importar si esta 'En espera' o 'Confirmada' y en este último caso el Hospedaje pasara a estar libre entre esas fechas.<br>
+    Las reservas antiguas confirmadas no se pueden eliminar porque forman parte del historial y las que nunca fueron confirmadas se borran automaticamente.</p>
   </div>
 </div>

@@ -8,6 +8,13 @@ class Reservation < ActiveRecord::Base
 
 	validate :consistent_dates
   validate :free_couch
+  after_find :is_old
+
+  def is_old
+      if self.end_date < Date.current && !self.confirmed?
+        self.destroy
+      end
+  end
 
   private
   def consistent_dates

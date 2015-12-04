@@ -1,0 +1,2 @@
+module RatingCouchesHelper
+end

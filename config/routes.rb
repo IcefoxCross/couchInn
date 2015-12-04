@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   resources :users
   resources :couches
   resources :questions
+  resources :rating_couches
 
   resources :users do
     member do

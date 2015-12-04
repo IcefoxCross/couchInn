@@ -45,8 +45,18 @@ jQuery(function($) {
 	    });
 	});
 
-})
+	//range slider value en el show del couch
+    var range = $('.input-range'),
+    	value = $('.range-value');
+    
+	value.html(range.attr('value'));
 
+	range.on('input', function(){
+	    value.html(this.value);
+	});
+
+})
+	// preguntas/calificaciones toggleables en el show del couch
 	function showonlyone(thechosenone) {
          $('.newboxes').each(function(index) {
               if ($(this).attr("id") == thechosenone) {
@@ -57,3 +67,4 @@ jQuery(function($) {
               }
          });
     }
+

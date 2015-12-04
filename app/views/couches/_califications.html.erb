@@ -1,28 +1,39 @@
-<h3><strong>Calificaciones</strong></h3>
+<% if user_signed_in? && @puede_calificar > 0 %> <!-- sacar segunda condicion para poder agregar calificaciones -->
+    <h4>Calificar</h4>
+    <%= form_for(RatingCouch.new) do |f| %>
+        <div class="range-slider">
+            <%= f.range_field(:rating, in: 0..5, class: 'input-range', :value => "5") %>
+            <span class="range-value"></span>
+        </div> 
 
-<% if @couch.questions.count > 0 %>
-  <ul id="toggle-ask">
-    <% @couch.questions.each do |question| %>
-    <li>
-      <h3><%= question.ask %></h3>
-      <h4>por <%= question.user.name %></h4>
-      <span>+</span>
-      <div class="panel">
-        <% if question.answer == nil  %>
-          <% if @couch.is_owner?(current_user) %>
-            <p>Responda aqui</p>
-          <% else %>
-            <p>Sin responder</p>
-          <% end %>
-        <% else %>
-          <p><%= question.answer %></p>
-        <% end %>
-      </div>
-    </li>
+        <div class="field">
+            <%= f.text_area :comment, required: true , class: 'form-control', :rows => 2, label: 'Responder', placeholder: 'Ingrese un comentario.' %>
+        </div>
+        <div>
+            <%= f.hidden_field :couch_id, {:value => @couch.id} %>
+        </div>
+        <div class="actions">
+            <%= f.submit "Enviar", class: "btn btn-default" %>
+        </div>
     <% end %>
-  </ul>
+<% end %>
 
+<% if @couch.rating_couches.count > 0 %>
+    <ul id="toggle-ask">
+        <% @couch.rating_couches.each do |rating_couche| %>
+            <li>
+                <h3><%= rating_couche.rating %></h3>
+                <h4>por <%= rating_couche.user.name %></h4>
+                <span>+</span>
+                <div class="panel">
+                    <p><%= rating_couche.comment %></p>
+                    <% if user_signed_in? && (@couch.is_owner?(current_user) || rating_couche.user == current_user) %>
+                        <%= link_to 'Eliminar', rating_couche, method: :delete, data: { confirm: '¿Seguro de querer elimirar la Calificación?' }, class: "btn btn-danger" %><br>
+                    <% end %>
+                </div>
+            </li>
+        <% end %>
+    </ul>
 <% else %>
-  <h5>No se realizaron preguntas en este Hospedaje.</h5>
-
+  <h5>No se realizaron calificaciones en este Hospedaje.</h5>
 <% end %>

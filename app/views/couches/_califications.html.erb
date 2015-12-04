@@ -27,7 +27,7 @@
                 <span>+</span>
                 <div class="panel">
                     <p><%= rating_couche.comment %></p>
-                    <% if user_signed_in? && rating_couche.user == current_user) %>
+                    <% if user_signed_in? && rating_couche.user == current_user %>
                         <%= link_to 'Eliminar', rating_couche, method: :delete, data: { confirm: '¿Seguro de querer elimirar la Calificación?' }, class: "btn btn-danger" %><br>
                     <% end %>
                 </div>

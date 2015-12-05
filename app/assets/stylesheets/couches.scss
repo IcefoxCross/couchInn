@@ -20,14 +20,17 @@
 	cursor:pointer;
 }
 
+/*alineacion derecha*/
 #derecha{
     text-align: right;    
 }
 
+/*calificaciones inicia cerrado*/
 #newboxes2 {
     display: none;
 }
 
+/*preguntas desplegables*/
 #toggle-ask {
     list-style:none;    
     font-family:arial;
@@ -47,7 +50,7 @@
         margin:0;
         font-size:18px;
     }
-    #toggle-ask span {
+    #toggle-ask .ask {
         position:absolute;
         right:5px; top:0;
         color:#999;
@@ -68,6 +71,11 @@
         color:#aaa;
         font-size:16px;
     }
+
+/*color de estrella*/
+.star{
+  color:#96ac3c;
+}
 
 /*range-slider*/
 * {

@@ -19,7 +19,7 @@
             <li>
                 <h3><%= question.ask %></h3>
                 <h4>por <%= question.user.name %></h4>
-                <span>+</span>
+                <span class="ask">+</span>
                 <div class="panel">
                     <% if question.answer == nil  %>
                         <% if user_signed_in? && @couch.is_owner?(current_user) %>

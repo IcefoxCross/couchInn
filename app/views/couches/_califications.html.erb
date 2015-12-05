@@ -22,9 +22,16 @@
     <ul id="toggle-ask">
         <% @couch.rating_couches.each do |rating_couche| %>
             <li>
-                <h3><%= rating_couche.rating %></h3>
+                <h3>
+                    <% for i in 0..rating_couche.rating-1 %>
+                        <span class="star">★</span>
+                    <% end %>
+                    <% for i in rating_couche.rating..4 %>
+                        <span class="star">☆</span>
+                    <% end %>
+                </h3>
                 <h4>por <%= rating_couche.user.name %></h4>
-                <span>+</span>
+                <span class="ask">+</span>
                 <div class="panel">
                     <p><%= rating_couche.comment %></p>
                     <% if user_signed_in? && rating_couche.user == current_user %>

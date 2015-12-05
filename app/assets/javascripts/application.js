@@ -36,10 +36,10 @@ jQuery(function($) {
 	        var text = $(this).children('div.panel');
 	        if (text.is(':hidden')) {
 	            text.slideDown('200');
-	            $(this).children('span').html('-');        
+	            $(this).children('span.ask').html('-');        
 	        } else {
 	            text.slideUp('200');
-	            $(this).children('span').html('+');        
+	            $(this).children('span.ask').html('+');        
 	        }
 	        $(this).children('div.panel').children('form').children('div.field').children('textarea').focus();
 	    });

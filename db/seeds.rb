@@ -21,11 +21,11 @@ hamaca	= Type.find_or_create_by(name: 'Hamaca')
 
 # Usuarios
 # Como le agrego el campo encrypted_password: ??
-admin1	= User.find_or_create_by(name: 'admin1', lastName: 'Pereza1', email: 'admin1@mail.com', password: '12345', admin: true, premium: false, age: Date.current-21.year)
-admin2	= User.find_or_create_by(name: 'admin2', lastName: 'Pereza1', email: 'admin2@mail.com', password: '12345', admin: true, premium: false, age: Date.current-21.year)
-user1	= User.find_or_create_by(name: 'user1', lastName: 'Perezu1', email: 'user1@mail.com', password: '12345', admin: false, premium: false, age: Date.current-21.year)
-user2	= User.find_or_create_by(name: 'user2', lastName: 'Perezu2', email: 'user2@mail.com', password: '12345', admin: false, premium: false, age: Date.current-21.year)
-user3	= User.find_or_create_by(name: 'user3', lastName: 'Perezu3', email: 'user3@mail.com', password: '12345', admin: false, premium: true, age: Date.current-21.year)
+admin1	= User.find_or_create_by(name: 'admin1', lastName: 'Pereza1', email: 'admin1@mail.com', password: '12345', admin: true, premium: false, age: Date.current-21.year, card_number: '0', card_security_number: '0')
+admin2	= User.find_or_create_by(name: 'admin2', lastName: 'Pereza1', email: 'admin2@mail.com', password: '12345', admin: true, premium: false, age: Date.current-21.year, card_number: '0', card_security_number: '0')
+user1	= User.find_or_create_by(name: 'user1', lastName: 'Perezu1', email: 'user1@mail.com', password: '12345', admin: false, premium: false, age: Date.current-21.year, card_number: '0', card_security_number: '0')
+user2	= User.find_or_create_by(name: 'user2', lastName: 'Perezu2', email: 'user2@mail.com', password: '12345', admin: false, premium: false, age: Date.current-21.year, card_number: '0', card_security_number: '0')
+user3	= User.find_or_create_by(name: 'user3', lastName: 'Perezu3', email: 'user3@mail.com', password: '12345', admin: false, premium: true, age: Date.current-21.year, card_number: '0', card_security_number: '0')
 
 # Couches
 Couch.find_or_create_by(name: 'Sillon Azul1', description: 'Un sillon azul muy comodo. Para una persona que quiera pasar unas noches sin disgustos en La Plata y disfruar de las atracciones que brinda esta cuidad.', location: 'La Plata', dateBegin: Date.current+1.year, dateEnd: Date.current+2.year, maxHosts: 1, image: 'http://i.imgur.com/hwlWzBk.jpg', user: user1, type: sillon)

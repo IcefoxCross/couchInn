@@ -21,6 +21,11 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def rating_self
+    @ratings_u = RatingUser.where(user: current_user)
+    @ratings_c = RatingCouch.where(user: current_user)
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show

@@ -13,9 +13,26 @@
     <br>
 
     <h3><strong>Contacto:</strong> <%= @user.email %></h3>
-    <%= link_to 'Editar', edit_user_registration_path, class: "btn btn-link"%>
-    <% if !current_user.premium? %>
-      <%= link_to 'Convertirse en premium', premium_user_path(@user) , class: "btn btn-link"%>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <% if user_signed_in? && @user == current_user %>
+      <%= link_to 'Editar', edit_user_registration_path, class: "btn btn-warning"%>
+      <% if !current_user.premium? %>
+        <%= link_to 'Convertirse en premium', premium_user_path(@user) , class: "btn btn-warning"%>
+      <% end %>
     <% end %>
   </div>
 </div>
+
+<br>
+
+<div class="row">
+  <div class="col-md-12">
+    <div><%= render 'califications' %></div>
+  </div>
+</div>
+
+<br>

@@ -39,7 +39,7 @@
         <br>
         <%= link_to 'Volver', couches_self_path, class: "btn btn-default"%>
       <% else %>
-        <%= link_to 'Reservar', new_new_reservation_path(@couch), class: "btn btn-default"%><br> <!-- TODO crear parametros en el controller de reserva -->
+        <%= link_to 'Reservar', new_new_reservation_path(@couch), class: "btn btn-default"%><br>
         <br>
         <%= link_to 'Volver', @url_back, class: "btn btn-default"%>
       <% end %>

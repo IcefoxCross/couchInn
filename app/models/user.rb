@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 	has_many :reservations, dependent: :destroy
 	has_many :questions
 	has_many :rating_couches
+	has_many :rating_users
 
 	validate :edad_minima
 	#validate :tarjeta

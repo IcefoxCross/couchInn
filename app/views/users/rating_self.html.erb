@@ -1,0 +1,74 @@
+<h1>Mis Calificaciones a Usuarios</h1>
+<div class="row">
+  <div class="col-md-8">
+
+    <% if @ratings_u.count > 0 %>
+    <ul id="toggle-ask">
+        <% @ratings_u.each do |rating_user| %>
+            <li>
+                <h3>
+                    <% for i in 0..rating_user.rating-1 %>
+                        <span class="star">★</span>
+                    <% end %>
+                    <% for i in rating_user.rating..4 %>
+                        <span class="star">☆</span>
+                    <% end %>
+                </h3>
+                <% u = User.find(rating_user.rated_user_id) %>
+                <h4>al Usuario <%= u.name %></h4>
+                <span class="ask">+</span>
+                <div class="panel">
+                    <p><%= rating_user.comment %></p>
+                    <% if user_signed_in? && rating_user.user == current_user %>
+                        <%= link_to 'Eliminar', rating_user, method: :delete, data: { confirm: '¿Seguro de querer elimirar la Calificación?' }, class: "btn btn-danger" %><br>
+                    <% end %>
+                </div>
+            </li>
+        <% end %>
+    </ul>
+<% else %>
+  <h5>No hiciste calificaciones sobre Usuarios.</h5>
+<% end %>
+
+  </div>
+  <div class="col-md-4">
+    <h3>Info</h3>
+    <p>Si Elimina una calificación esta dejara de verse en el perfil del Usiario o del Hospedaje al que le corresponda.<br>
+        De todas formas seguira pudiendo realizar mas calicicaciones sobre esos Usuarios u Hospedajes.
+    </p>
+  </div>
+</div>
+
+<h1>Mis Calificaciones a Hospedajes</h1>
+<div class="row">
+  <div class="col-md-8">
+
+    <% if @ratings_c.count > 0 %>
+    <ul id="toggle-ask">
+        <% @ratings_c.each do |rating_couch| %>
+            <li>
+                <h3>
+                    <% for i in 0..rating_couch.rating-1 %>
+                        <span class="star">★</span>
+                    <% end %>
+                    <% for i in rating_couch.rating..4 %>
+                        <span class="star">☆</span>
+                    <% end %>
+                </h3>
+                <h4>al Hospedaje <%= rating_couch.couch.name %></h4>
+                <span class="ask">+</span>
+                <div class="panel">
+                    <p><%= rating_couch.comment %></p>
+                    <% if user_signed_in? && rating_couch.user == current_user %>
+                        <%= link_to 'Eliminar', rating_couch, method: :delete, data: { confirm: '¿Seguro de querer elimirar la Calificación?' }, class: "btn btn-danger" %><br>
+                    <% end %>
+                </div>
+            </li>
+        <% end %>
+    </ul>
+<% else %>
+  <h5>No hiciste calificaciones en Hospedajes.</h5>
+<% end %>
+
+  </div>
+</div>

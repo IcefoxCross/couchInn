@@ -14,10 +14,12 @@
     <h3><strong>Fecha Limite:</strong> <%= @couch.dateEnd %></h3>
 
     <h3><strong>Huespedes:</strong> <%= @couch.maxHosts %></h3>
+
+    <h3><strong>Dueño:</strong> <%= link_to @couch.user.name, user_path(@couch.user) %></h3>
   </div>
 
   <div class="col-md-6">
-    <h3 class="img-thumbnail"> <%= image_tag( @couch.image , height: '320', width: '320')%></h3>
+    <h3 class="img-thumbnail"> <%= image_tag( @couch.image , height: '400', width: '400')%></h3>
   </div>
 </div>
 

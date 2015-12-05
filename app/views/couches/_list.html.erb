@@ -34,7 +34,7 @@
             <div class="col-md-10">
               <td><h4><%= link_to couch.name, couch_path(couch) %></h4></td>
               <td><h4><%= couch.type.name %></h4></td>
-              <td><h4><%= couch.user.name %></h4></td>
+              <td><h4><%= link_to couch.user.name, user_path(couch.user) %></h4></td>
               <td><h4><%= couch.location %></h4></td>
               <td><h4><%= couch.maxHosts %></h4></td>
               <td><h4><%= couch.dateBegin %></h4></td>

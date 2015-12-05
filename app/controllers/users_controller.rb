@@ -24,6 +24,13 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    # calificaciones del @user
+    @ratings = RatingUser.where(rated_user_id: @user.id)
+    # si el current_user puede calificar @puede_calificar es mayor a 0
+    # crear condicion Reservation.joins() o Reservation.where()
+    if user_signed_in?
+      @puede_calificar = Reservation.joins(:couch).where('couches.user'=> current_user, user: @user).where("end_date < :d",{d: Date.current}).count
+    end
   end
 
   # GET /users/new

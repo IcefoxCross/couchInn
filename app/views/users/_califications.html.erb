@@ -1,0 +1,47 @@
+<h2>Calificaciones</h2>
+<% if user_signed_in? && @puede_calificar > 0 %> <!-- sacar segunda condicion para poder agregar calificaciones -->
+    <h4>Calificar</h4>
+    <%= form_for(RatingUser.new) do |f| %>
+        <div class="range-slider">
+            <%= f.range_field(:rating, in: 0..5, class: 'input-range', :value => "5") %>
+            <span class="range-value"></span>
+        </div> 
+
+        <div class="field">
+            <%= f.text_area :comment, required: true , class: 'form-control', :rows => 2, label: 'Responder', placeholder: 'Ingrese un comentario.' %>
+        </div>
+        <div>
+            <%= f.hidden_field :rated_user_id, {:value => @user.id} %>
+        </div>
+        <div class="actions">
+            <%= f.submit "Enviar", class: "btn btn-default" %>
+        </div>
+    <% end %>
+<% end %>
+
+<% if @ratings.count > 0 %>
+    <ul id="toggle-ask">
+        <% @ratings.each do |rating_user| %>
+            <li>
+                <h3>
+                    <% for i in 0..rating_user.rating-1 %>
+                        <span class="star">★</span>
+                    <% end %>
+                    <% for i in rating_user.rating..4 %>
+                        <span class="star">☆</span>
+                    <% end %>
+                </h3>
+                <h4>por <%= rating_user.user.name %></h4>
+                <span class="ask">+</span>
+                <div class="panel">
+                    <p><%= rating_user.comment %></p>
+                    <% if user_signed_in? && rating_user.user == current_user %>
+                        <%= link_to 'Eliminar', rating_user, method: :delete, data: { confirm: '¿Seguro de querer elimirar la Calificación?' }, class: "btn btn-danger" %><br>
+                    <% end %>
+                </div>
+            </li>
+        <% end %>
+    </ul>
+<% else %>
+  <h5>No se realizaron calificaciones sobre este Usuario.</h5>
+<% end %>

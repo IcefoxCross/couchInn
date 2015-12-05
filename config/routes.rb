@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   resources :couches
   resources :questions
   resources :rating_couches
+  resources :rating_users
 
   resources :users, except: [:edit] do
     member do

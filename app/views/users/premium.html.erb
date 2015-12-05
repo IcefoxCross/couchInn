@@ -8,11 +8,11 @@
   </div>
   <div class="field">
       <%= f.label "Numero de cuenta (16 digitos)" %><br>
-      <%= f.number_field :card_number %>
+      <%= f.text_field :card_number, required: true, autocomplete: "off", :maxlength => 16,:minlength => 16 %>
   </div>
   <div class="field">
       <%= f.label "Numero de seguridad (4 digitos)" %><br>
-      <%= f.number_field :card_security_number %>
+      <%= f.text_field :card_security_number, required: true, autocomplete: "off", :maxlength => 4,:minlength => 4 %>
   </div>
 
   <div class="field">
@@ -24,3 +24,5 @@
     <%= f.submit "Enviar" %>
   </div>
 <% end %>
+
+

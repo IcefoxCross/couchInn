@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 	has_many :rating_users
 
 	validate :edad_minima
+    validates :card_number, :numericality => {:only_integer => true}
+    validates :card_security_number, :numericality => {:only_integer => true}
 	#validate :tarjeta
 
 	def get_age

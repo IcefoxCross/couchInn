@@ -38,15 +38,15 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/2.json
   def premium
     @user=User.find(params[:id])
-    #respond_to do |format|
-      #if @user.update(user_params)
-        #format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        #format.json { render :show, status: :ok, location: @user }
-      #else
-        #format.html { render :edit }
-        #format.json { render json: @user.errors, status: :unprocessable_entity }
-      #end
-    #end
+#    respond_to do |format|
+#      if User.find(params[:id])
+#          format.html { redirect_to @user, notice: 'Se ha convertido en premium' }
+#        format.json { render :show, status: :created, location: @user }
+#      else
+#        format.html { render :premium }
+#        format.json { render json: @user.errors, status: :unprocessable_entity }
+#      end
+#    end
   end
 
   # POST /users
@@ -56,7 +56,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+          format.html { redirect_to @user, notice: 'Usuarop creado exitosamente' }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -70,10 +70,10 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
+          format.html { redirect_to @user, notice: 'Usuario actualizado exitosamente' }
         format.json { render :show, status: :ok, location: @user }
       else
-        format.html { render :edit }
+          format.html { render :premium }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
@@ -84,7 +84,7 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+        format.html { redirect_to users_url, notice: 'Usuario eliminado exitosamente' }
       format.json { head :no_content }
     end
   end

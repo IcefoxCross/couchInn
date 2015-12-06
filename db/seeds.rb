@@ -12,6 +12,8 @@ Couch.destroy_all
 Type.destroy_all
 Reservation.destroy_all
 Question.destroy_all
+RatingUser.destroy_all
+RatingCouch.destroy_all
 
 # Tipos de couch
 default	= Type.find_or_create_by(name: 'default')
@@ -67,3 +69,21 @@ Question.find_or_create_by(ask: '¿La hamaca es muy verde?', answer: 'Tiene un p
 Question.find_or_create_by(ask: '¿La hamaca esta limpia?', answer: 'Sí', couch: c5, user: user2)
 Question.find_or_create_by(ask: '¿Esta a la intemperie?', answer: 'No', couch: c5, user: user1)
 Question.find_or_create_by(ask: '¿Esta en el centro?', couch: c5, user: user1)
+
+#Calificaciones Couches
+# para c4
+RatingCouch.find_or_create_by(rating: 4, comment: 'muy comoda', couch_id: c4.id, user_id: user1.id)
+RatingCouch.find_or_create_by(rating: 5, comment: 'grande', couch_id: c4.id, user_id: user3.id)
+# para c5
+RatingCouch.find_or_create_by(rating: 3, comment: 'esta bueno', couch_id: c5.id, user_id: user1.id)
+RatingCouch.find_or_create_by(rating: 0, comment: 'La hamaca era roja', couch_id: c5.id, user_id: user1.id)
+RatingCouch.find_or_create_by(rating: 5, comment: 'muy comoda', couch_id: c5.id, user_id: user2.id)
+
+#Calificaciones Users
+# para user1
+RatingUser.find_or_create_by(rating: 5, comment: 'muy bien todo', rated_user_id: user1.id, user_id: user2.id)
+RatingUser.find_or_create_by(rating: 2, comment: 'no seocmo se llama', rated_user_id: user1.id, user_id: user3.id)
+# para user3
+RatingUser.find_or_create_by(rating: 0, comment: 'es malo', rated_user_id: user3.id, user_id: user2.id)
+RatingUser.find_or_create_by(rating: 1, comment: 'nunca se acordo mi nombre', rated_user_id: user3.id, user_id: user2.id)
+RatingUser.find_or_create_by(rating: 4, comment: 'fue amable', rated_user_id: user3.id, user_id: user1.id)

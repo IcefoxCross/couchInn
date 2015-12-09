@@ -35,7 +35,7 @@ gem 'rails-i18n', '~> 4.0', '>= 4.0.5'
 
 gem 'filterrific'
 
-gem 'rails_12factor'
+gem 'rails_12factor', group: :production
 
 #ruby "2.1.5"
 # Use ActiveModel has_secure_password

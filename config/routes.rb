@@ -5,7 +5,8 @@ Rails.application.routes.draw do
 
   resources :reservations
 
-  devise_for :users, controllers: { registrations: "registrations" }
+  devise_for :users, controllers: { registrations: "registrations",
+                                    passwords: "passwords" }
 
   devise_scope :user do
     get "/login" => "devise/sessions#new"
@@ -38,7 +39,7 @@ Rails.application.routes.draw do
   get '/reservations_self', to: 'reservations#index_self'
 
   get '/reservations/new/:couch_id', to: 'reservations#new', as: 'new_new_reservation'
-
+  
   get '/rating_self', to: 'users#rating_self'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

@@ -15,7 +15,7 @@
 
     <h3><strong>Huespedes:</strong> <%= @couch.maxHosts %></h3>
 
-    <h3><strong>Dueño:</strong> <%= link_to @couch.user.name, user_path(@couch.user) %></h3>
+    <h3><strong>Dueño:</strong> <%= link_to "#{@couch.user.name} #{@couch.user.lastName}", user_path(@couch.user) %></h3>
   </div>
 
   <div class="col-md-6">

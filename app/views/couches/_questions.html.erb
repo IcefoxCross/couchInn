@@ -17,7 +17,12 @@
     <ul id="toggle-ask">
         <% @couch.questions.each do |question| %>
             <li>
-                <h3><%= question.ask %></h3>
+                <h3>
+                  <% if !(question.answer == nil) %>
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                  <% end %>
+                  <%= question.ask %>
+                </h3>
                 <h4>por <%= question.user.name %></h4>
                 <span class="ask">+</span>
                 <div class="panel">

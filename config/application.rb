@@ -28,7 +28,5 @@ module CouchInn
     config.i18n.default_locale = 'es'
 
     config.assets.paths << "#{Rails}/vendor/assets/fonts"
-
-    config.assets.precompile += %w( *.eot *.svg *.ttf *.woff *.otf)
   end
 end

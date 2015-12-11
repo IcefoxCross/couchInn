@@ -33,7 +33,11 @@
           <div class="col-md-7">
             <td><h4><%= link_to couch.name, couch_path(couch) %></h4>
               <% if @unanswered_questions > 0 %>
-                <h4><span class="label label-warning"><%= @unanswered_questions %> Preguntas Pendientes</span></h4>
+                <% if @unanswered_questions == 1 %>
+                  <h4><span class="label label-warning"><%= @unanswered_questions %> Pregunta Pendiente</span></h4>
+                <% else %>
+                  <h4><span class="label label-warning"><%= @unanswered_questions %> Preguntas Pendientes</span></h4>
+                <% end %> 
               <% end %>
             </td>
             <td><h4><%= couch.type.name %></h4></td>

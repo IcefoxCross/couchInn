@@ -1,29 +1,7 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Listado de Usuarios</h1>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Nombre</th>
-      <th>Apellido</th>
-      <th>Mail</th>
-      <th>Edad</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.lastName %></td>
-        <td><%= user.email %></td>
-        <td><%= user.get_age %></td>
-        <td><%= link_to 'Ver usuario', user %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<h3>Ingrese las fechas entre las que quiere su reporte</h3>
+  <%= render 'filter' %>
+  
+  <%= render(
+    partial: 'users/list',
+    locals: { users: @users }) %>

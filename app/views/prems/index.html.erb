@@ -1,0 +1,7 @@
+<h1>Listado de pagos</h1>
+
+  <%= render 'filter' %>
+  
+  <%= render(
+    partial: 'prems/list',
+    locals: { prems: @prems }) %>

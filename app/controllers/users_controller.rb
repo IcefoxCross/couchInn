@@ -2,7 +2,18 @@ class UsersController < ApplicationController
     before_action :set_user, only: [:show, :edit, :update, :destroy, :premium]
     before_action :authenticate_user!
     before_action :is_premium, only: [:premium]
+    before_action :is_admin, only: [:index]
 
+    def is_admin
+        if (current_user==nil)
+            redirect_to couches_path, alert: "Error: Solo los administradores pueden visualizar esta seccion"
+        else        
+            if (current_user.admin!=true)
+                redirect_to couches_path, alert: "Error: Solo los administradores pueden visualizar esta seccion"
+            end
+        end
+    end
+    
     def is_premium
         @prem=true
         if (current_user==nil)
@@ -18,7 +29,16 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+     @filterrific = initialize_filterrific(
+        User,
+        params[:filterrific],
+      ) or return
+      @users = @filterrific.find.page(params[:page]).paginate(:page => params[:page], :per_page => 10)
+
+      respond_to do |format|
+        format.html
+        format.js
+      end
   end
 
   def rating_self

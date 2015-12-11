@@ -1,0 +1,38 @@
+
+<div id="filterrific_results">
+  <table id="perms_t", class="table table-hover">
+      <thead>
+      <div class="row">
+        <tr>
+          <div class="col-md-6">
+            
+            <th>Monto</th>
+            <th>Fecha</th>
+          </div> 
+        </tr>
+      </div> 
+      </thead>
+
+      <tbody>
+      <div class="row">
+          <% @total=0 %>
+          <% @prems.each do |prem| %>
+          <tr data-link="<%= prem_path(prem) %>">
+            <div class="col-md-10">
+               
+                <td><h4><%= prem.monto %></h4></td>
+                <% @total = @total+prem.monto %>
+                <td><h4><%= prem.created_at %></h4></td>
+            </div>  
+          </tr>
+        <% end %>
+      </div> 
+      </tbody>
+    </table>
+     
+  <br>
+    <h3> El monto total entre las fechas ingresadas es de <%= @total %> pesos</h3>
+  <div class="pagination">
+      <%= will_paginate @prems, :container => false, :previous_label => "Anterior", :next_label => "Siguiente" %>
+  </div>
+</div>

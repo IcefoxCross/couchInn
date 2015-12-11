@@ -1,0 +1,17 @@
+<p>El equipo de CouchInn descontará un solo pago de 50 pesos para activar su membresía premium</p>
+
+<%= form_for(@prem) do |f| %>
+
+  <div class="field">
+      <%= f.label "Numero de cuenta (16 digitos)" %><br>
+      <%= f.text_field :card_number, required: true, autocomplete: "off", :maxlength => 16,:minlength => 16 %>
+  </div>
+  <div class="field">
+      <%= f.label "Numero de seguridad (4 digitos)" %><br>
+      <%= f.text_field :card_security_number, required: true, autocomplete: "off", :maxlength => 4,:minlength => 4 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Enviar", class: "btn btn-default"  %>
+  </div>
+<% end %>

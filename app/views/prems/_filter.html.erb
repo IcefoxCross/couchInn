@@ -1,0 +1,24 @@
+<h3> Ingrese las fechas entre las que quiere generar su reporte: </h3>
+
+</ul>
+<div class="panel panel-default">
+  <div class="panel-body bg-success">
+
+    <%= form_for_filterrific @filterrific, class: "form-inline" do |f| %>
+          
+
+      
+          <%= f.label "Fecha de inicio"%>
+      <%= f.date_field(
+            :created_at_gte,
+            class: 'filterrific-periodically-observed') %>
+
+          <%= f.label "Fecha limite"%>
+      <%= f.date_field(
+            :created_at_lt,
+            class: 'filterrific-periodically-observed') %>
+        <%# add an automated spinner to your form when the list is refreshed %>
+        <%= render_filterrific_spinner %>
+    <% end %>
+  </div>
+</div>

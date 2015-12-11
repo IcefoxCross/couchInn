@@ -29,7 +29,7 @@ class ReservationsController < ApplicationController
   # POST /reservations
   # POST /reservations.json
   def create
-    @reservation = Reservation.new(reservation_params)
+      @reservation = Reservation.new(reservetion_params)
     @reservation.user_id = current_user.id
     @reservation.confirmed = false
 
@@ -71,11 +71,11 @@ class ReservationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reservation
-      @reservation = Reservation.find(params[:id])
+        @reservation = Reservation.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.require(:reservation).permit(:start_date, :end_date, :confirmed, :couch_id)
+        params.require(:reservation).permit(:start_date, :end_date, :confirmed, :couch_id)
     end
 end

@@ -1,0 +1,37 @@
+<div id="filterrific_results">
+
+  <table id="perms_t", class="table table-hover">
+      <thead>
+      <div class="row">
+        <tr>
+          <div class="col-md-6">
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Email</th>
+            <th>Fecha de creacion</th>
+          </div> 
+        </tr>
+      </div> 
+      </thead>
+
+      <tbody>
+      <div class="row">
+          <% @users.each do |user| %>
+          <tr data-link="<%= user_path(user) %>">
+            <div class="col-md-10">
+                <td><h4><%= user.name %></h4></td>
+                <td><h4><%= user.lastName %></h4></td>
+                <td><h4><%= user.email %></h4></td>
+                <td><h4><%= user.created_at %></h4></td>
+            </div>  
+          </tr>
+        <% end %>
+      </div> 
+      </tbody>
+    </table>
+  <br>
+
+  <div class="pagination">
+      <%= will_paginate @users, :container => false, :previous_label => "Anterior", :next_label => "Siguiente" %>
+  </div>
+</div>

@@ -1,8 +1,46 @@
 Rails.application.routes.draw do
 
+  resources :prems
+  resources :prem
+  get 'prem/index'
 
-  get 'users/premium'
+  get 'prem/create'
 
+  get 'prem/edit'
+
+  get 'prem/show'
+
+    get 'prem/destroy'
+
+  get 'prem/new' 
+      get 'prems/index'
+
+  get 'prems/create'
+
+  get 'prems/edit'
+
+  get 'prems/show'
+
+    get 'prems/destroy'
+
+  get 'prems/new' 
+    
+get 'premium/index'
+
+  get 'premium/create'
+
+  get 'premium/edit'
+
+  get 'premium/show'
+
+  get 'premium/delete'
+
+  get 'premium/new'
+
+  get 'users/premium' 
+    
+    get'users/index'
+    
   resources :reservations
 
   devise_for :users, controllers: { registrations: "registrations",
@@ -19,6 +57,7 @@ Rails.application.routes.draw do
   resources :questions
   resources :rating_couches
   resources :rating_users
+
 
   resources :users, except: [:edit] do
     member do

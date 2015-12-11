@@ -21,7 +21,7 @@
     <% if user_signed_in? && @user == current_user %>
       <%= link_to 'Editar', edit_user_registration_path, class: "btn btn-warning"%>
       <% if !current_user.premium? %>
-        <%= link_to 'Convertirse en premium', premium_user_path(@user) , class: "btn btn-warning"%>
+      <%= link_to 'Convertirse en premium', prems_new_path(@user) , class: "btn btn-warning"%>
       <% end %>
     <% end %>
   </div>

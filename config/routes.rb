@@ -10,10 +10,11 @@ Rails.application.routes.draw do
 
   get 'prem/show'
 
-    get 'prem/destroy'
+  get 'prem/destroy'
 
   get 'prem/new' 
-      get 'prems/index'
+      
+  get 'prems/index'
 
   get 'prems/create'
 
@@ -21,25 +22,11 @@ Rails.application.routes.draw do
 
   get 'prems/show'
 
-    get 'prems/destroy'
+  get 'prems/destroy'
 
   get 'prems/new' 
     
-get 'premium/index'
-
-  get 'premium/create'
-
-  get 'premium/edit'
-
-  get 'premium/show'
-
-  get 'premium/delete'
-
-  get 'premium/new'
-
-  get 'users/premium' 
-    
-    get'users/index'
+  get'users/index'
     
   resources :reservations
 
@@ -65,6 +52,12 @@ get 'premium/index'
     end
   end
 
+#    resources :reservations do
+#  collection do
+#        get 'index_receibed'
+#  end
+#end
+    
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -76,6 +69,12 @@ get 'premium/index'
   get '/couches_self', to: 'couches#index_self'
 
   get '/reservations_self', to: 'reservations#index_self'
+    
+  get '/reservations_receibed', to: 'reservations#index_receibed'
+    
+    get '/reservations/index_couch/:couch_id', to: 'reservations#index_couch', as: 'couch_reservation'
+    
+    get '/reservations/accept/:reservation_id', to: 'reservations#accept', as: 'accept_reservation'
 
   get '/reservations/new/:couch_id', to: 'reservations#new', as: 'new_new_reservation'
   

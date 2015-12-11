@@ -37,6 +37,7 @@
     <% if user_signed_in? %> 
       <% if @couch.is_owner?(current_user) %>
         <%= link_to 'Editar', edit_couch_path(@couch), class: "btn btn-warning"%>  
+      <%= link_to 'Solicitudes', couch_reservation_path(@couch), class: "btn btn-warning"%>  
         <%= link_to 'Eliminar', @couch, method: :delete, data: { confirm: '¿Seguro de querer elimirar el Couch?' }, class: "btn btn-danger" %><br>
         <br>
         <%= link_to 'Volver', couches_self_path, class: "btn btn-default"%>

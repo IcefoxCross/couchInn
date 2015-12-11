@@ -10,6 +10,43 @@ class ReservationsController < ApplicationController
   def index_self
     @reservations = Reservation.where(user: current_user).paginate(:page => params[:page], :per_page => 10)
   end
+    
+  def index_receibed
+#      @couches=Couch.where(user: current_user)
+#      @couches.each do |couch|
+#          @reservations = Reservation.where(couch_id: couch.id).paginate(:page => params[:page], :per_page => 10)
+##          @reserv.each do |reserv|
+##              
+##          end
+#      end
+#          
+#          @reserv.each do |reserv|
+#              @reserv.
+#              @res << 
+#          end
+#         end
+      @reservations = Reservation.all
+      
+  end  
+    def index_couch
+#      @couches=Couch.where(user: current_user)
+#      @couches.each do |couch|
+#          @reservations = Reservation.where(couch_id: couch.id).paginate(:page => params[:page], :per_page => 10)
+##          @reserv.each do |reserv|
+##              
+##          end
+#      end
+#          
+#          @reserv.each do |reserv|
+#              @reserv.
+#              @res << 
+#          end
+#         end
+#        @c=Couch.find(@couch.id)
+#        @reservations = Reservation.where(couch_id: @c.id)
+        @reservations = Reservation.where(couch_id: params[:couch_id])
+      
+  end
 
   # GET /reservations/1
   # GET /reservations/1.json
@@ -29,7 +66,7 @@ class ReservationsController < ApplicationController
   # POST /reservations
   # POST /reservations.json
   def create
-      @reservation = Reservation.new(reservetion_params)
+    @reservation = Reservation.new(reservation_params)
     @reservation.user_id = current_user.id
     @reservation.confirmed = false
 
@@ -67,7 +104,20 @@ class ReservationsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  def accept
+      @reservation=Reservation.find(params[:reservation_id])
+      @reservation.confirmed=true
+      @reservation.save
+      @reservations=Reservation.all
+      @reservations.each do |r|
+          if (r.id!=@reservation.id)
+              if(((r.end_date<=@reservation.end_date)&&(r.end_date>=@reservation.start_date))||((r.start_date>=@reservation.start_date)&&(r.start_date<=@reservation.end_date)))
+                  r.destroy
+              end
+          end
+      end
+      redirect_to reservations_receibed_path, notice: 'La reserva fue actualizada exitosamente.' 
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_reservation

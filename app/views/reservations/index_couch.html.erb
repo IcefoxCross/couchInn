@@ -1,4 +1,4 @@
-<h1>Mis Reservas</h1>
+<h1>Reservas del Couch</h1>
 
 <div class="row">
   <div class="col-md-8">
@@ -11,15 +11,14 @@
           <th>Fecha de Inicio</th>
           <th>Fecha Final</th>
           <th>Estado</th>
-          <th colspan="1"></th>
         </tr>
       </thead>
 
       <tbody>
-        <% @reservations.each do |reservation| %>
+      <% @reservations.each do |reservation| %>
           <% if !(reservation.end_date < Date.current && !reservation.confirmed?) %>
             <tr>
-              <td><h4><%= link_to reservation.couch.name, couch_path(reservation.couch) %></h4></td> 
+                <td><h4><%= link_to reservation.couch.name, couch_path(reservation.couch) %></h4></td> 
                 <td><h4><%= link_to reservation.user.name, user_path(reservation.user) %></h4></td>
               <td><h4><%= reservation.start_date %></h4></td>
               <td><h4><%= reservation.end_date %></h4></td>
@@ -30,17 +29,17 @@
               <% end %>
               <% if reservation.start_date > Date.current %>
                 <td><%= link_to 'Cancelar', reservation, method: :delete, data: { confirm: '¿Seguro de querer elimirar la Reserva?' }, class: "btn btn-danger" %></td>
+                <% if (reservation.confirmed!=true) %>
+                    <td><%= link_to 'Confirmar', accept_reservation_path(reservation), data: { confirm: 'Al aceptar la reserva se rechazaran aquellas con fechas superpuestas, ¿esta seguro de que desea aceptarla?' }, class: "btn btn-default"%>  </td>
+                <% end %>
               <% end %>
             </tr>
           <% end %>
         <% end %>
+        
       </tbody>
     </table>
 
   </div>
-  <div class="col-md-4">
-    <h3>Info</h3>
-    <p>Si cancela una reserva esta se perdera sin importar si esta 'En espera' o 'Confirmada' y en este último caso el Hospedaje pasara a estar libre entre esas fechas.<br>
-    Las reservas antiguas confirmadas no se pueden eliminar porque forman parte del historial y las que nunca fueron confirmadas se borran automaticamente.</p>
-  </div>
 </div>
+    

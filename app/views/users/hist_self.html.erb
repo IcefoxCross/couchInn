@@ -1,0 +1,49 @@
+<h1>Historial de Hospedajes</h1>
+
+<div>
+  <table id="couch_t", class="table table-hover">
+      <thead>
+      <div class="row">
+        <tr>
+          <div class="col-md-2">
+            <th></th>
+          </div> 
+          <div class="col-md-6">
+            <th>Nombre</th>
+            <th>Tipo</th>
+            <th>Dueño</th>
+            <th>Lugar</th>
+            <th>Huespedes</th>
+            <th>Fecha de Inicio</th>
+            <th>Fecha Limite</th>
+          </div> 
+        </tr>
+      </div> 
+      </thead>
+
+      <tbody>
+      <div class="row">
+        <% @hist.each do |hist_r| %>
+          <tr data-link="<%= couch_path(hist_r.couch) %>">
+            <div class="col-md-2">
+              <td class="img-thumbnail"><%= image_tag( hist_r.couch.image , height: '80', width: '80')%></td>
+            </div> 
+            <div class="col-md-10">
+              <td><h4><%= link_to hist_r.couch.name, couch_path(hist_r.couch) %></h4></td>
+              <td><h4><%= hist_r.couch.type.name %></h4></td>
+              <td><h4><%= link_to "#{hist_r.couch.user.name} #{hist_r.couch.user.lastName}", user_path(hist_r.couch.user) %></h4></td>
+              <td><h4><%= hist_r.couch.location %></h4></td>
+              <td><h4><%= hist_r.couch.maxHosts %></h4></td>
+              <td><h4><%= hist_r.couch.dateBegin %></h4></td>
+              <td><h4><%= hist_r.couch.dateEnd %></h4></td>
+            </div>  
+          </tr>
+        <% end %>
+      </div> 
+      </tbody>
+    </table>
+  <br>
+  <% if @hist.count <= 0 %>
+    <h5>Historial vacío</h5>
+  <% end %>
+</div>

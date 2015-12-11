@@ -80,6 +80,8 @@ Rails.application.routes.draw do
   
   get '/rating_self', to: 'users#rating_self'
 
+  get '/hist_self', to: 'users#hist_self'
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

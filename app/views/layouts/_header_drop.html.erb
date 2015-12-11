@@ -36,11 +36,16 @@
               <li><%= link_to 'Mis Reservas', reservations_self_path %></li>
                 <li><%= link_to 'Mis Solicitudes Recibidas', reservations_receibed_path %></li>
               <li><%= link_to 'Mis Calificaciones', rating_self_path %></li>
+              <li><%= link_to 'Historial', hist_self_path %></li>
               <li><%= link_to 'Mi Cuenta', current_user %></li>
 
               <li role="separator" class="divider"></li>
               <% if @unanswered_questions > 0 %>
-                <li><%= link_to @unanswered_questions.to_s+' Preguntas Pendientes', couches_self_path, class: "btn btn-warning" %></li>
+                <% if @unanswered_questions == 1 %>
+                  <li><%= link_to @unanswered_questions.to_s+' Pregunta Pendiente', couches_self_path, class: "btn btn-warning" %></li>
+                <% else %>
+                  <li><%= link_to @unanswered_questions.to_s+' Preguntas Pendientes', couches_self_path, class: "btn btn-warning" %></li>
+                <% end %> 
                 <br>
                 <li role="separator" class="divider"></li>
               <% end %>

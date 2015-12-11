@@ -27,7 +27,7 @@ admin1	= User.find_or_create_by(name: 'Jose', lastName: 'Ballesteros', email: 'j
 admin2	= User.find_or_create_by(name: 'Emilia', lastName: 'Marquez', email: 'emiliam@couchinn.com', password: 'emiliam88', admin: true, premium: false, age: Date.current-27.year, card_number: '0', card_security_number: '0')
 user1	= User.find_or_create_by(name: 'Gabriel', lastName: 'Navarro', email: 'gabrieln@couchinn.com', password: 'gabrieln94', admin: false, premium: false, age: Date.current-21.year, card_number: '0', card_security_number: '0')
 user2	= User.find_or_create_by(name: 'Sergio', lastName: 'Saenz', email: 'sergios@couchinn.com', password: 'sergios86', admin: false, premium: false, age: Date.current-29.year, card_number: '0', card_security_number: '0')
-user3	= User.find_or_create_by(name: 'Isabel', lastName: 'Castrillo', email: 'isabelc@couchinn.com', password: 'isabelc80', admin: false, premium: true, age: Date.current-35.year, card_number: '0', card_security_number: '0')
+user3	= User.find_or_create_by(name: 'Isabel', lastName: 'Castrillo', email: 'isabelc@couchinn.com', password: 'isabelc80', admin: false, premium: false, age: Date.current-35.year, card_number: '0', card_security_number: '0')
 
 # Couches
 Couch.find_or_create_by(name: 'Sillon Azul 1', description: 'Un sillon azul muy comodo. Para una persona que quiera pasar unas noches sin disgustos en La Plata y disfruar de las atracciones que brinda esta cuidad.', location: 'La Plata', dateBegin: Date.current+1.year, dateEnd: Date.current+2.year, maxHosts: 1, image: 'http://i.imgur.com/hwlWzBk.jpg', user: user1, type: sillon)

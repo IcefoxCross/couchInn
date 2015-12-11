@@ -30,16 +30,6 @@ ActiveRecord::Schema.define(version: 20151210144702) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "premia", force: :cascade do |t|
-    t.integer  "monto"
-    t.integer  "user_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
-    t.string   "card_number"
-    t.string   "card_security_number"
-    t.string   "card_titular"
-  end
-
   create_table "prems", force: :cascade do |t|
     t.integer  "monto"
     t.integer  "user_id"

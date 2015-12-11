@@ -46,6 +46,10 @@ class UsersController < ApplicationController
     @ratings_c = RatingCouch.where(user: current_user)
   end
 
+  def hist_self
+    @hist = Reservation.where("user_id = :u AND confirmed = :t AND end_date < :d",{u: current_user.id, t: true, d: Date.current})
+  end
+
   # GET /users/1
   # GET /users/1.json
   def show
